@@ -25,6 +25,7 @@ public class Game implements Runnable{
 
     public void init(){
         dispaly = new Display(title,width,height);
+        Assets.init();
     }
 
     private void tick(){
@@ -41,6 +42,7 @@ public class Game implements Runnable{
         g.clearRect(0,0,width,height);
         //Desenare
 
+        g.drawImage(Assets.player,10,10,null);
 
         //final desen
         bs.show();
