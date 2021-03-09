@@ -15,6 +15,9 @@ public class Game implements Runnable{
 
     private BufferStrategy bs;
     private Graphics g;
+
+    //States
+    private State gameState;
     
 
     public Game(String title,int width,int heigh){
@@ -26,11 +29,13 @@ public class Game implements Runnable{
     public void init(){
         dispaly = new Display(title,width,height);
         Assets.init();
+        gameState = new GameState();
+        State.setState(gameState);
     }
 
-    int x=0;
     private void tick(){
-        x+=1;
+        if(State.getState() != null)
+            State.getState().tick();
     }
 
     private void render(){
@@ -43,7 +48,8 @@ public class Game implements Runnable{
         g.clearRect(0,0,width,height);
         //Desenare
 
-        g.drawImage(Assets.tree,x,10,null);
+        if(State.getState() != null)
+            State.getState().render(g);
 
         //final desen
         bs.show();
