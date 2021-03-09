@@ -28,8 +28,9 @@ public class Game implements Runnable{
         Assets.init();
     }
 
+    int x=0;
     private void tick(){
-
+        x+=1;
     }
 
     private void render(){
@@ -42,7 +43,7 @@ public class Game implements Runnable{
         g.clearRect(0,0,width,height);
         //Desenare
 
-        g.drawImage(Assets.player,10,10,null);
+        g.drawImage(Assets.tree,x,10,null);
 
         //final desen
         bs.show();
@@ -52,9 +53,34 @@ public class Game implements Runnable{
     public void run(){
         init();
 
+        int fps = 61;
+        double timePerTick = 1000000000 / fps;
+        double delta = 0;
+        long now;
+        long lastTime = System.nanoTime();
+        long timer =0;
+        int ticks =0 ;
+
         while (running){
-            tick();
-            render();
+
+            now = System.nanoTime();
+            delta += (now - lastTime) / timePerTick;
+            timer += now - lastTime;
+            lastTime = now;
+
+            if(delta >= 1){
+                tick();
+                render();
+                ticks++;
+                delta--;
+            }
+            //verifica fps
+            if(timer >= 1000000000){
+                System.out.print("\nTicks and framesL "+ticks);
+                ticks=0;
+                timer=0;
+            }
+
         }
 
         stop();
