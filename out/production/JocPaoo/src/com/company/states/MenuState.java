@@ -1,10 +1,10 @@
-package com.company;
+package com.company.states;
 
 import java.awt.*;
 
-public class GameState extends State {
+public class MenuState extends State {
 
-    public GameState(){
+    public MenuState(){
 
     }
 
@@ -15,6 +15,6 @@ public class GameState extends State {
 
     @Override
     public void render(Graphics g) {
-        g.drawImage(Assets.player,0,0,null);
+
     }
 }

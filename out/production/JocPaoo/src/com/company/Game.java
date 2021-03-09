@@ -1,8 +1,11 @@
 package com.company;
 
+import com.company.states.GameState;
+import com.company.states.MenuState;
+import com.company.states.State;
+
 import java.awt.*;
 import java.awt.image.BufferStrategy;
-import java.awt.image.BufferedImage;
 
 public class Game implements Runnable{
 
@@ -18,7 +21,7 @@ public class Game implements Runnable{
 
     //States
     private State gameState;
-    
+    private State menuState;
 
     public Game(String title,int width,int heigh){
         this.title = title;
@@ -30,6 +33,7 @@ public class Game implements Runnable{
         dispaly = new Display(title,width,height);
         Assets.init();
         gameState = new GameState();
+        menuState = new MenuState();
         State.setState(gameState);
     }
 

@@ -1,8 +1,8 @@
-package com.company;
+package com.company.states;
 
 import java.awt.*;
 
-public class MenuState extends State{
+public class MenuState extends State {
 
     public MenuState(){
 
