@@ -1,0 +1,3 @@
+prima linie are marimea hartii(tiles)
+a doua linie are coodonatele de spawn a caracterului
+urmatoarele linii sunt lumea
