@@ -3,6 +3,7 @@ package com.company.states;
 import com.company.Assets;
 import com.company.Game;
 import com.company.entities.Player;
+import com.company.tiles.Tile;
 
 import java.awt.*;
 
@@ -22,6 +23,7 @@ public class GameState extends State {
 
     @Override
     public void render(Graphics g) {
+        Tile.tiles[0].render(g,0,0);
         player.render(g);
     }
 }
