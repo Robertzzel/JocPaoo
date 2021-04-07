@@ -1,6 +1,7 @@
 package com.company.states;
 
 import com.company.Game;
+import com.company.Handler;
 
 import java.awt.*;
 
@@ -15,10 +16,10 @@ public abstract class State {
     public static State getState(){ return currentState;}
 
 
-    protected Game game;
+    protected Handler handler;
 
-    public State(Game game){
-        this.game = game;
+    public State(Handler handler){
+        this.handler = handler;
     }
 
     public abstract void tick();
