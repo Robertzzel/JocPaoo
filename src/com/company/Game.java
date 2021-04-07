@@ -81,7 +81,7 @@ public class Game implements Runnable{
     public void run(){
         init();
 
-        int fps = 61;
+        int fps = 100;
         double timePerTick = 1000000000 / fps;
         double delta = 0;
         long now;
