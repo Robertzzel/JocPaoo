@@ -1,5 +1,7 @@
 package com.company;
 
+import com.company.gfx.Assets;
+import com.company.gfx.GameCamera;
 import com.company.states.GameState;
 import com.company.states.MenuState;
 import com.company.states.State;
@@ -10,7 +12,7 @@ import java.awt.image.BufferStrategy;
 public class Game implements Runnable{
 
     private Display dispaly;
-    public int width , height;
+    private int width , height;
     public String title;
 
     private boolean running  = false;
@@ -26,6 +28,9 @@ public class Game implements Runnable{
     //Inout
     private KeyManager keyManager;
 
+    //Camera
+    private GameCamera gameCamera;
+
     public Game(String title,int width,int heigh){
         this.title = title;
         this.width = width;
@@ -37,6 +42,7 @@ public class Game implements Runnable{
         dispaly = new Display(title,width,height);
         dispaly.getFrame().addKeyListener(keyManager);
         Assets.init();
+        gameCamera = new GameCamera(this,0,0);
         gameState = new GameState(this);
         menuState = new MenuState(this);
         State.setState(gameState);
@@ -102,6 +108,7 @@ public class Game implements Runnable{
         stop();
     }
     public KeyManager getKeyManager(){return keyManager;}
+    public GameCamera getGameCamera(){return gameCamera;}
 
     public synchronized void start(){
         if(running)
@@ -109,6 +116,14 @@ public class Game implements Runnable{
         running = true;
         thread = new Thread(this);
         thread.start();
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
     }
 
     public synchronized void stop(){

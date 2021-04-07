@@ -1,6 +1,6 @@
 package com.company.tiles;
 
-import com.company.Assets;
+import com.company.gfx.Assets;
 
 public class DirtTile extends Tile{
 

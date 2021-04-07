@@ -1,4 +1,4 @@
-package com.company;
+package com.company.gfx;
 
 import java.awt.image.BufferedImage;
 

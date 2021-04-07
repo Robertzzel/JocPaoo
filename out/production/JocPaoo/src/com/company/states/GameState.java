@@ -1,9 +1,7 @@
 package com.company.states;
 
-import com.company.Assets;
 import com.company.Game;
 import com.company.entities.Player;
-import com.company.tiles.Tile;
 import com.company.worlds.World;
 
 import java.awt.*;
@@ -16,7 +14,7 @@ public class GameState extends State {
     public GameState(Game game){
         super(game);
         player = new Player(game,100,100);
-        world = new World("res/worlds/world1.txt");
+        world = new World(game,"res/worlds/world1.txt");
     }
 
     @Override

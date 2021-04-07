@@ -1,22 +1,21 @@
 package com.company.entities;
 
-import com.company.Assets;
+import com.company.gfx.Assets;
 import com.company.Game;
 
 import java.awt.*;
 
 public class Player extends Creature {
 
-    private Game game;
     public Player(Game game, float x, float y){
-        super(x,y,DEFAULT_CREATURE_WIDTH,DEFAUL_CREATURE_HEIGHT);
-        this.game = game;
+        super(game,x,y,DEFAULT_CREATURE_WIDTH,DEFAUL_CREATURE_HEIGHT);
     }
 
     @Override
     public void tick() {
         getInput();
         move();
+        game.getGameCamera().centerOnEntity(this);
     }
 
     private void getInput(){
@@ -35,6 +34,6 @@ public class Player extends Creature {
 
     @Override
     public void render(Graphics g) {
-        g.drawImage(Assets.player,(int)x,(int)y,width,height,null);
+        g.drawImage(Assets.player,(int)(x - game.getGameCamera().getxOffset()),(int)(y-game.getGameCamera().getyOffset()),width,height,null);
     }
 }

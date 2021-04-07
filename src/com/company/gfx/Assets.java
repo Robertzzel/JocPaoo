@@ -1,6 +1,8 @@
-package com.company;
+package com.company.gfx;
 
-import java.awt.font.ImageGraphicAttribute;
+import com.company.gfx.ImageLoader;
+import com.company.gfx.SpriteSheet;
+
 import java.awt.image.BufferedImage;
 
 public class Assets {
