@@ -62,6 +62,14 @@ public class World {
         }
     }
 
+    public int getSpawnx() {
+        return spawnx;
+    }
+
+    public int getSpawny() {
+        return spawny;
+    }
+
     public int getWidth() {
         return width;
     }
