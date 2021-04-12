@@ -8,16 +8,19 @@ import java.awt.image.BufferedImage;
 public class Assets {
 
     public static final int width = 32 , height = 32;
-    public static BufferedImage player, dirt, grass, stone, tree;
+    public static BufferedImage grass, stone, tree, brad;
+    public static BufferedImage player;
 
     public static void init(){
-        SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("/textures/sprite.png"));
 
-        dirt = sheet.crop(0,0,width,height);
-        grass = sheet.crop(width,0,width,height);
-        tree = sheet.crop(width*2,0,width,height);
-        stone = sheet.crop(width*3,0,width,height);
-        player = sheet.crop(width*4,0,width,height);
+        SpriteSheet playerSheet = new SpriteSheet(ImageLoader.loadImage("/textures/player.png"));
+        SpriteSheet worldSheet = new SpriteSheet(ImageLoader.loadImage("/textures/world2.png"));
+
+        grass = worldSheet.crop(269,112,width,height);
+        player = playerSheet.crop(6*width,0,width,height);
+        tree = worldSheet.crop(209,112,16*3,16*3);
+        brad = worldSheet.crop(197,208,16*3,16*3);
+        stone = worldSheet.crop(315,190,13*3,13*3);
     }
 
 }
