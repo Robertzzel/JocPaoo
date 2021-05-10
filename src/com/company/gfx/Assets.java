@@ -8,7 +8,7 @@ import java.awt.image.BufferedImage;
 public class Assets {
 
     public static final int width = 32 , height = 32;
-    public static BufferedImage grass, stone, tree, brad, player_still;
+    public static BufferedImage grass, stone, tree, brad, boat, player_still;
     public static BufferedImage[] player_down, player_up, player_left, player_right;
 
     public static void init(){
