@@ -18,6 +18,9 @@ public class GameState extends State {
         handler.setWorld(world);
         player = new Player(handler,world.getSpawnx()*32,world.getSpawny()*100);
 
+        player.setX(world.getSpawnx());
+        player.setY(world.getSpawny());
+
     }
 
     @Override

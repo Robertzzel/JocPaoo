@@ -68,8 +68,10 @@ public class Player extends Creature {
             return animaRight.getCurrentFrame();
         }else if(yMove < 0){
             return animaUp.getCurrentFrame();
-        }else{
+        }else if(yMove > 0){
             return animaDown.getCurrentFrame();
+        }else{
+            return Assets.player_still;
         }
     }
 }

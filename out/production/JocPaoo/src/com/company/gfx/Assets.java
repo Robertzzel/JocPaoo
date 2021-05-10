@@ -8,7 +8,7 @@ import java.awt.image.BufferedImage;
 public class Assets {
 
     public static final int width = 32 , height = 32;
-    public static BufferedImage grass, stone, tree, brad;
+    public static BufferedImage grass, stone, tree, brad, player_still;
     public static BufferedImage[] player_down, player_up, player_left, player_right;
 
     public static void init(){
@@ -20,6 +20,8 @@ public class Assets {
         tree = worldSheet.crop(209,112,16*3,16*3);
         brad = worldSheet.crop(197,208,16*3,16*3);
         stone = worldSheet.crop(315,190,13*3,13*3);
+
+        player_still = playerSheet.crop(3*width-5,0,width,height);
 
         player_down = new BufferedImage[3];
         player_down[0] = playerSheet.crop(0,0,width-5,height);
