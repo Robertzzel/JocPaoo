@@ -2,6 +2,9 @@ package com.company.worlds;
 
 import com.company.Game;
 import com.company.Handler;
+import com.company.entities.Player;
+import com.company.states.EntityManager;
+import com.company.staticEntities.Tree;
 import com.company.tiles.Tile;
 import com.company.utils.Utils;
 
@@ -14,13 +17,20 @@ public class World {
     private int spawnx,spawny;
     private int[][] tiles;
 
+    private EntityManager entityManager;
+
     public World(Handler handler, String path){
         this.handler = handler;
+        entityManager = new EntityManager(handler,new Player(handler,100,100));
+        entityManager.addEntity(new Tree(handler,400,1000));
         loadWorld(path);
+
+        entityManager.getPlayer().setX(spawnx);
+        entityManager.getPlayer().setY(spawny);
     }
 
     public void tick(){
-
+        entityManager.tick();
     }
 
     public void render(Graphics g){
@@ -34,6 +44,9 @@ public class World {
                 getTile(x,y).render(g,(int)(x * Tile.TILEWIDTH - handler.getGameCamera().getxOffset()),(int)(y * Tile.TILEHEIGHT - handler.getGameCamera().getyOffset()));
             }
         }
+
+        //entities
+        entityManager.render(g);
     }
 
     public Tile getTile(int x,int y){

@@ -3,6 +3,7 @@ package com.company.states;
 import com.company.Game;
 import com.company.Handler;
 import com.company.entities.Player;
+import com.company.staticEntities.Tree;
 import com.company.worlds.World;
 
 import java.awt.*;
@@ -16,22 +17,16 @@ public class GameState extends State {
         super(handler);
         world = new World(handler,"res/worlds/world1.txt");
         handler.setWorld(world);
-        player = new Player(handler,world.getSpawnx()*32,world.getSpawny()*100);
-
-        player.setX(world.getSpawnx());
-        player.setY(world.getSpawny());
 
     }
 
     @Override
     public void tick() {
         world.tick();
-        player.tick();
     }
 
     @Override
     public void render(Graphics g) {
         world.render(g);
-        player.render(g);
     }
 }
