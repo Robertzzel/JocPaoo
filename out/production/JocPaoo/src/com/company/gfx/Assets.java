@@ -10,11 +10,17 @@ public class Assets {
     public static final int width = 32 , height = 32;
     public static BufferedImage grass, stone, tree, brad, boat, player_still;
     public static BufferedImage[] player_down, player_up, player_left, player_right;
+    public static BufferedImage startBtn[];
 
     public static void init(){
 
         SpriteSheet playerSheet = new SpriteSheet(ImageLoader.loadImage("/textures/player.png"));
         SpriteSheet worldSheet = new SpriteSheet(ImageLoader.loadImage("/textures/world.png"));
+        SpriteSheet btnSheet = new SpriteSheet(ImageLoader.loadImage("/textures/sheetButoane.png"));
+
+        startBtn = new BufferedImage[2];
+        startBtn[0] = btnSheet.crop(0,0,155,65);
+        startBtn[1] = btnSheet.crop(0,65,164,65);
 
         grass = worldSheet.crop(269,112,width,height);
         tree = worldSheet.crop(209,112,16*3,16*3);

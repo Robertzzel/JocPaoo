@@ -22,6 +22,8 @@ public class GameState extends State {
 
     @Override
     public void tick() {
+        if(handler.getMouseManager().isLeftPressed())
+            State.setState(handler.getGame().menuState);
         world.tick();
     }
 
