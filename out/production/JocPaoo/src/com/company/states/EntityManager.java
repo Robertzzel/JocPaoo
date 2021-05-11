@@ -17,20 +17,19 @@ public class EntityManager {
         this.handler = handler;
         this.player = player;
         entities = new ArrayList<Entity>();
+        addEntity(player);
     }
 
     public void tick(){
         for(Entity e : entities){
             e.tick();
         }
-        player.tick();
     }
 
     public void render(Graphics g){
         for(Entity e : entities){
             e.render(g);
         }
-        player.render(g);
     }
 
     public void addEntity(Entity e){
