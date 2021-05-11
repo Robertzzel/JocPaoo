@@ -2,6 +2,8 @@ package com.company;
 
 import com.company.gfx.Assets;
 import com.company.gfx.GameCamera;
+import com.company.input.KeyManager;
+import com.company.input.MouseManager;
 import com.company.states.GameState;
 import com.company.states.MenuState;
 import com.company.states.State;
@@ -22,11 +24,12 @@ public class Game implements Runnable{
     private Graphics g;
 
     //States
-    private State gameState;
-    private State menuState;
+    public State gameState;
+    public State menuState;
 
     //Inout
     private KeyManager keyManager;
+    private MouseManager mouseManager;
 
     //Camera
     private GameCamera gameCamera;
@@ -39,11 +42,17 @@ public class Game implements Runnable{
         this.width = width;
         this.height = heigh;
         this.keyManager = new KeyManager();
+        this.mouseManager = new MouseManager();
     }
 
     public void init(){
         dispaly = new Display(title,width,height);
         dispaly.getFrame().addKeyListener(keyManager);
+        dispaly.getCanvas().addMouseListener(mouseManager);
+        dispaly.getCanvas().addMouseMotionListener(mouseManager);
+
+        dispaly.getFrame().addMouseListener(mouseManager);
+        dispaly.getFrame().addMouseMotionListener(mouseManager);
         Assets.init();
 
         handler = new Handler(this);
@@ -51,7 +60,7 @@ public class Game implements Runnable{
 
         gameState = new GameState(handler);
         menuState = new MenuState(handler);
-        State.setState(gameState);
+        State.setState(menuState);
     }
 
     private void tick(){
@@ -122,6 +131,10 @@ public class Game implements Runnable{
         running = true;
         thread = new Thread(this);
         thread.start();
+    }
+
+    public MouseManager getMouseManager() {
+        return mouseManager;
     }
 
     public int getWidth() {

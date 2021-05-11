@@ -1,6 +1,8 @@
 package com.company;
 
 import com.company.gfx.GameCamera;
+import com.company.input.KeyManager;
+import com.company.input.MouseManager;
 import com.company.worlds.World;
 
 public class Handler {
@@ -41,5 +43,9 @@ public class Handler {
 
     public void setWorld(World world){
         this.world = world;
+    }
+
+    public MouseManager getMouseManager(){
+        return game.getMouseManager();
     }
 }

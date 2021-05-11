@@ -13,7 +13,8 @@ public class MenuState extends State {
 
     @Override
     public void tick() {
-
+        if(handler.getMouseManager().isLeftPressed() && handler.getMouseManager().isRightPressed())
+            State.setState(handler.getGame().gameState);
     }
 
     @Override

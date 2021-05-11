@@ -1,4 +1,4 @@
-package com.company;
+package com.company.input;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
