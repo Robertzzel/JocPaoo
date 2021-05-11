@@ -1,6 +1,5 @@
 package com.company.worlds;
 
-import com.company.Game;
 import com.company.Handler;
 import com.company.entities.Player;
 import com.company.states.EntityManager;
