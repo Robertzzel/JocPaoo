@@ -12,6 +12,8 @@ public class GameState extends State {
     public static int lvl = 1;
     private Player player;
     private World world;
+    private int min=3,sec=0;
+    private long currentTime=System.currentTimeMillis();
 
     public GameState(Handler handler){
         super(handler);
@@ -20,10 +22,34 @@ public class GameState extends State {
 
     }
 
+    public void clock(){
+        if(System.currentTimeMillis() - currentTime > 1000){
+            if(sec+min>0){
+                if(sec == 0 && min > 0){
+                    min--;
+                    sec=59;
+                }else{
+                    sec--;
+                }
+                handler.getGame().getDispaly().mesaj.setText(min+":"+sec);
+                System.out.println("schimbare");
+            }else{
+                this.min=2;
+                this.sec=59;
+                State.setState(handler.getGame().menuState);
+                handler.getMouseManager().setUiManager(handler.getGame().uiManagerMenu);
+
+            }
+            currentTime = System.currentTimeMillis();
+        }
+
+    }
+
     @Override
     public void tick() {
-        verifEscapeKey();
         world.tick();
+        clock();
+        verifEscapeKey();
     }
 
     @Override

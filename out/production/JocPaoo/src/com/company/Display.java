@@ -7,6 +7,7 @@ public class Display {
 
     private JFrame frame;
     private Canvas canvas;
+    public JLabel mesaj = new JLabel("Salut");
 
     private String title;
     private int width,height;
@@ -26,6 +27,10 @@ public class Display {
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
+
+        mesaj.setSize(100,100);
+        frame.add(mesaj);
+        frame.pack();
 
         canvas = new Canvas();
         canvas.setPreferredSize(new Dimension(width,height));

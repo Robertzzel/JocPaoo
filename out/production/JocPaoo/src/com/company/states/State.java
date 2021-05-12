@@ -8,6 +8,7 @@ import java.awt.*;
 public abstract class State {
 
     private static State currentState = null;
+    public int min,sec;
 
     public static void setState(State state){
         currentState = state;

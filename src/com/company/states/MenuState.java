@@ -7,6 +7,7 @@ import com.company.UI.UIImageButton;
 import com.company.UI.UIManager;
 import com.company.gfx.Assets;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowEvent;
 
@@ -43,6 +44,7 @@ public class MenuState extends State {
                 handler.getGame().getDispaly().getFrame().dispatchEvent(new WindowEvent(handler.getGame().getDispaly().getFrame(), WindowEvent.WINDOW_CLOSING));
             }
         }));
+
 
     }
 

@@ -28,9 +28,8 @@ public class Tree extends StaticEntity {
             handler.getGame().getMouseManager().setUiManager(handler.getGame().uiManagerMenu);
 
             handler.getWorld().loadWorld("res/worlds/world" + GameState.lvl + ".txt");
-            handler.getWorld().getEntityManager().getPlayer().setX(handler.getWorld().getSpawnx());
-            handler.getWorld().getEntityManager().getPlayer().setY(handler.getWorld().getSpawny());
-
+            handler.getWorld().getEntityManager().getPlayer().setX(handler.getWorld().getSpawnX());
+            handler.getWorld().getEntityManager().getPlayer().setY(handler.getWorld().getSpawnY());
         }
     }
 
