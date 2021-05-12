@@ -2,6 +2,7 @@ package com.company.staticEntities;
 
 import com.company.Handler;
 import com.company.gfx.Assets;
+import com.company.states.GameState;
 import com.company.states.State;
 import com.company.tiles.Tile;
 
@@ -18,14 +19,24 @@ public class Tree extends StaticEntity {
         bounds.height = (int) (height-height/1.5);
     }
 
-    @Override
-    public void tick() {
+    public void nextLevel(){
         if(this.checkEntityCollisions(0,10)){
+            GameState.lvl++;
+            if(GameState.lvl == 4)
+                GameState.lvl = 1;
             State.setState(handler.getGame().menuState);
             handler.getGame().getMouseManager().setUiManager(handler.getGame().uiManagerMenu);
+
+            handler.getWorld().loadWorld("res/worlds/world" + GameState.lvl + ".txt");
             handler.getWorld().getEntityManager().getPlayer().setX(handler.getWorld().getSpawnx());
             handler.getWorld().getEntityManager().getPlayer().setY(handler.getWorld().getSpawny());
+
         }
+    }
+
+    @Override
+    public void tick() {
+        nextLevel();
     }
 
     @Override

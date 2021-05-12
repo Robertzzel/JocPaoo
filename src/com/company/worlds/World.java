@@ -59,7 +59,7 @@ public class World {
         return t;
     }
 
-    private void loadWorld(String path){
+    public void loadWorld(String path){
         String file = Utils.loadFileAsString(path);
         String[] tokens = file.split("\\s+");
         width = Utils.parseInt(tokens[0]);

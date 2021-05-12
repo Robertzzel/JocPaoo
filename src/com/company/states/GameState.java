@@ -9,6 +9,7 @@ import java.awt.*;
 
 public class GameState extends State {
 
+    public static int lvl = 1;
     private Player player;
     private World world;
 
