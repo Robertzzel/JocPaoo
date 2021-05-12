@@ -2,7 +2,7 @@ package com.company.worlds;
 
 import com.company.Handler;
 import com.company.entities.Player;
-import com.company.states.EntityManager;
+import com.company.entities.EntityManager;
 import com.company.staticEntities.Tree;
 import com.company.tiles.Tile;
 import com.company.utils.Utils;

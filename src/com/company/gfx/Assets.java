@@ -10,7 +10,7 @@ public class Assets {
     public static final int width = 32 , height = 32;
     public static BufferedImage grass, stone, tree, brad, boat, player_still;
     public static BufferedImage[] player_down, player_up, player_left, player_right;
-    public static BufferedImage startBtn[];
+    public static BufferedImage startBtn[], helpBtn[], exitBtn[];
 
     public static void init(){
 
@@ -19,8 +19,16 @@ public class Assets {
         SpriteSheet btnSheet = new SpriteSheet(ImageLoader.loadImage("/textures/sheetButoane.png"));
 
         startBtn = new BufferedImage[2];
-        startBtn[0] = btnSheet.crop(0,0,155,65);
-        startBtn[1] = btnSheet.crop(0,65,164,65);
+        startBtn[0] = btnSheet.crop(0,192,150,48);
+        startBtn[1] = btnSheet.crop(0,240,150,48);
+
+        helpBtn = new BufferedImage[2];
+        helpBtn[0] = btnSheet.crop(0,96,150,48);
+        helpBtn[1] = btnSheet.crop(0,144,150,48);
+
+        exitBtn = new BufferedImage[2];
+        exitBtn[1] = btnSheet.crop(0,0,150,48);
+        exitBtn[0] = btnSheet.crop(0,48,150,48);
 
         grass = worldSheet.crop(269,112,width,height);
         tree = worldSheet.crop(209,112,16*3,16*3);

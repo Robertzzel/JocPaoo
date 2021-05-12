@@ -1,9 +1,8 @@
 package com.company.states;
 
-import com.company.Game;
 import com.company.Handler;
+import com.company.UI.UIManager;
 import com.company.entities.Player;
-import com.company.staticEntities.Tree;
 import com.company.worlds.World;
 
 import java.awt.*;
@@ -22,13 +21,19 @@ public class GameState extends State {
 
     @Override
     public void tick() {
-        if(handler.getMouseManager().isLeftPressed())
-            State.setState(handler.getGame().menuState);
+        verifEscapeKey();
         world.tick();
     }
 
     @Override
     public void render(Graphics g) {
         world.render(g);
+    }
+
+    public void verifEscapeKey(){
+        if(handler.getKeyManager().esc){
+            State.setState(handler.getGame().menuState);
+            handler.getMouseManager().setUiManager(handler.getGame().uiManagerMenu);
+        }
     }
 }

@@ -1,4 +1,4 @@
-package com.company.states;
+package com.company.entities;
 
 import com.company.Handler;
 import com.company.entities.Entity;

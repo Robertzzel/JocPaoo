@@ -7,7 +7,7 @@ import com.company.tiles.Tile;
 public abstract class Creature extends Entity{
 
     public static final int DEFAULT_HEALTH = 10;
-    public static final float DEFAULT_SPEED = 3;
+    public static final float DEFAULT_SPEED = 2;
     public static final int DEFAULT_CREATURE_WIDTH = 64;
     public static final int DEFAUL_CREATURE_HEIGHT = 64;
     protected int health;

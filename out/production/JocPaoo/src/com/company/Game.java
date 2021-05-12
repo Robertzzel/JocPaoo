@@ -1,14 +1,17 @@
 package com.company;
 
+import com.company.UI.UIManager;
 import com.company.gfx.Assets;
 import com.company.gfx.GameCamera;
 import com.company.input.KeyManager;
 import com.company.input.MouseManager;
 import com.company.states.GameState;
+import com.company.states.HelpState;
 import com.company.states.MenuState;
 import com.company.states.State;
 
 import java.awt.*;
+import java.awt.event.WindowEvent;
 import java.awt.image.BufferStrategy;
 
 public class Game implements Runnable{
@@ -23,9 +26,15 @@ public class Game implements Runnable{
     private BufferStrategy bs;
     private Graphics g;
 
+    //UiManageruri
+
+    public UIManager uiManagerMenu;
+    public UIManager uiManagerHelp;
+
     //States
     public State gameState;
     public State menuState;
+    public State helpState;
 
     //Inout
     private KeyManager keyManager;
@@ -58,9 +67,16 @@ public class Game implements Runnable{
         handler = new Handler(this);
         gameCamera = new GameCamera(handler,0,0);
 
+
+        this.uiManagerMenu = new UIManager(handler);
+        this.uiManagerHelp = new UIManager(handler);
+
         gameState = new GameState(handler);
-        menuState = new MenuState(handler);
+        menuState = new MenuState(handler,uiManagerMenu);
+        helpState = new HelpState(handler,uiManagerHelp);
+
         State.setState(menuState);
+        handler.getMouseManager().setUiManager(uiManagerMenu);
     }
 
     private void tick(){
@@ -154,5 +170,9 @@ public class Game implements Runnable{
         }catch (InterruptedException e){
 
         }
+    }
+
+    public Display getDispaly() {
+        return dispaly;
     }
 }
