@@ -13,18 +13,15 @@ public class GameState extends State {
     public static int lvl = 1;
     private Player player;
     private World world;
-    private Timer timer;
 
     public GameState(Handler handler){
         super(handler);
         world = new World(handler,"res/worlds/world1.txt");
         handler.setWorld(world);
-        this.timer = new Timer(handler,1,0);
     }
 
     @Override
     public void tick() {
-        timer.tick();
         world.tick();
         verifEscapeKey();
     }

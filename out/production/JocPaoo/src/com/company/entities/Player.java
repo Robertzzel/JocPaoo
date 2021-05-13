@@ -14,7 +14,7 @@ public class Player extends Creature {
     private long lastAttackTimer, attackCooldown = 500,attackTimer=attackCooldown;
 
     public Player(Handler handler, float x, float y){
-        super(handler,x,y,48,48);
+        super(handler,x,y,40,40);
 
         bounds.x = 14;//relativ la patratelul cu imginea
         bounds.y = 29;

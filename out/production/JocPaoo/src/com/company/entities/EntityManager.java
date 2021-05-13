@@ -30,6 +30,7 @@ public class EntityManager {
     }
 
     public void tick(){
+        System.out.println(entities.size());
         for(int i=0;i<entities.size();i++){
             entities.get(i).tick();
             if(!entities.get(i).alive){
@@ -45,9 +46,22 @@ public class EntityManager {
 
     }
 
+    public void deleteAll(){
+        System.out.println("Incepere stergere");
+        for(int i=0;i<entities.size();i++){
+            if(entities.get(i).getClass() == player.getClass()){
+                System.out.println("Player");
+                continue;
+            }else{
+                System.out.println(entities.get(i).getClass());
+                entities.get(i).alive = false;
+            }
+
+        }
+    }
+
     public void addEntity(Entity e){
         entities.add(e);
-        System.out.println(e.getClass());
     }
 
 

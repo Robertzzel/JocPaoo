@@ -50,6 +50,12 @@ public class Timer {
         this.currentTime = System.currentTimeMillis();
     }
 
+    private void resetClock(int min, int sec){
+        this.min = min;
+        this.sec = sec;
+        this.currentTime = System.currentTimeMillis();
+    }
+
     private void actionOnSecond(String timp){
         handler.getGame().getDispaly().mesaj.setText(timp);
     }

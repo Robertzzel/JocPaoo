@@ -4,6 +4,8 @@ linia 2: coord de start caracter(in tileuri) -> x,y
 
 linia 3: nr de entitati generate(nrEntitati)
 
+linia4: minute secunde pt timer -> min sec
+
 urmatoarele l linii : harta propriu-zisa
 
 urmatoarele nrEntitati linii : tipEnititate,x,y,viata

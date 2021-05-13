@@ -6,8 +6,10 @@ import com.company.entities.Player;
 import com.company.gfx.Assets;
 import com.company.staticEntities.Bush1;
 import com.company.staticEntities.Bush2;
+import com.company.staticEntities.FinishGrass;
 import com.company.staticEntities.Tree;
 import com.company.tiles.Tile;
+import com.company.utils.Timer;
 import com.company.utils.Utils;
 
 import java.awt.*;
@@ -16,7 +18,9 @@ public class World {
     private Handler handler;
     private int width, height;  //marimea hartii
     private int spawnX, spawnY;  //punctul de spanw pentru player
+    private int minute, secunde;
     private int nrMobi;
+    private Timer timer;
 
     private int[][] tiles;  //matrice pentru harta
 
@@ -40,6 +44,7 @@ public class World {
     public void tick()
     {
         entityManager.tick(); //tick la toate entitatile
+        timer.tick();
     }
 
     public void render (Graphics g)
@@ -70,29 +75,32 @@ public class World {
         return t;
     }
     public void loadWorld(String path) {
+
         String file = Utils.loadFileAsString(path); //clasa declarata in utils si contine metoda ajutatoare pentru program
         //loadFileAsString incarca continutul din fisierul dat la path
 
         String[] tokens = file.split("\\s+");    //split la oricat de multe spatii albe
 
-        width = Utils.parseInt(tokens[0]); //marimea hartii
-        height = Utils.parseInt(tokens[1]);
+        height = Utils.parseInt(tokens[0]); //marimea hartii
+        width = Utils.parseInt(tokens[1]);
 
-        spawnX = Utils.parseInt(tokens[2])* Assets.DEFAULT_TILE_WIDTH; //punctul de spanw pentru player
-        spawnY = Utils.parseInt(tokens[3])* Assets.DEFAULT_TILE_HEIGHT;
+        spawnY = Utils.parseInt(tokens[2])* Assets.DEFAULT_TILE_WIDTH; //punctul de spanw pentru player
+        spawnX = Utils.parseInt(tokens[3])* Assets.DEFAULT_TILE_HEIGHT;
 
         nrMobi = Utils.parseInt(tokens[4]);
-        System.out.println("Numar de mobi: "+nrMobi);
+
+        minute = Utils.parseInt(tokens[5]);
+        secunde = Utils.parseInt(tokens[6]);
 
         tiles = new int[width][height];
         for(int y = 0;y<height;y++){
             for(int x=0;x<width;x++)
             {
-                tiles[x][y] = Utils.parseInt(tokens[(x+y * width) + 5 ]);
+                tiles[x][y] = Utils.parseInt(tokens[(x+y * width) + 7 ]);
             }
         }
 
-        int mobsIndex = 5 + height*width;
+        int mobsIndex = 7 + height*width;
         for(int i=0;i<nrMobi;i++){
             int startingLinePosition = mobsIndex+(4*i);
             int type = Utils.parseInt(tokens[startingLinePosition]);
@@ -100,7 +108,7 @@ public class World {
             int coordY = Utils.parseInt(tokens[startingLinePosition+2])*Assets.DEFAULT_TILE_HEIGHT;
             int health = Utils.parseInt(tokens[startingLinePosition+3]);
 
-            System.out.println(type+" "+coordX+" "+coordY+" "+health);
+            //System.out.println(type+" "+coordX+" "+coordY+" "+health);
 
             if(type == 1){
                 Bush1 bush = new Bush1(handler,coordX,coordY,health);
@@ -109,10 +117,11 @@ public class World {
                 Bush2 bush = new Bush2(handler,coordX,coordY,health);
                 entityManager.addEntity(bush);
             }else if(type == 3){
-                entityManager.addEntity(new Tree(handler,coordX,coordY));
-            }else{
-            }
+                entityManager.addEntity(new FinishGrass(handler,coordX,coordY));
+            }else{ }
         }
+
+        timer = new Timer(handler,minute,secunde);
     }
 
     public int getWidth(){
