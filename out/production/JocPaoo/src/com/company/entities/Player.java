@@ -27,6 +27,10 @@ public class Player extends Creature {
 
     }
 
+    public void die(){
+        System.out.println("GAME OVER");
+    }
+
     @Override
     public void tick() {
         animaDown.tick();
@@ -36,6 +40,45 @@ public class Player extends Creature {
         getInput();
         move();
         handler.getGameCamera().centerOnEntity(this);
+
+        checkAttack();
+    }
+
+    public void checkAttack(){
+        Rectangle cb= getCollisionBounds(0,0);
+        Rectangle aR = new Rectangle();
+        int arSize = 30;
+        aR.width = arSize;
+        aR.height = arSize;
+
+        if(handler.getKeyManager().attack){
+
+            if(handler.getKeyManager().up){
+                aR.x = cb.x + cb.width/2 - arSize/2;
+                aR.y = cb.y - arSize;
+            }else if(handler.getKeyManager().down){
+                aR.x = cb.x + cb.width/2 - arSize/2;
+                aR.y = cb.y + cb.height;
+            }else if(handler.getKeyManager().left){
+                aR.x = cb.x - arSize;
+                aR.y = cb.y + cb.height/2 - arSize/2;
+            }else if(handler.getKeyManager().right){
+                aR.x = cb.x + cb.width;
+                aR.y = cb.y + cb.height/2 - arSize/2;
+            }else{
+                return;
+            }
+
+            for(Entity e: handler.getWorld().getEntityManager().getEntities()){
+                if(e.equals(this))
+                    continue;
+                if(e.getCollisionBounds(0,0).intersects(aR)){
+                    e.hurt(1);
+                    return;
+                }
+            }
+
+        }
     }
 
     private void getInput(){

@@ -40,7 +40,6 @@ public class MenuState extends State {
             @Override
             public void onClick() {
                 handler.getMouseManager().setUiManager(null);
-                //handler.getGame().stop();
                 handler.getGame().getDispaly().getFrame().dispatchEvent(new WindowEvent(handler.getGame().getDispaly().getFrame(), WindowEvent.WINDOW_CLOSING));
             }
         }));

@@ -29,7 +29,6 @@ public class Timer {
                     sec--;
                 }
 
-                //actiune la fiecare secunda
                 actionOnSecond(min+":"+sec);
 
             }else{

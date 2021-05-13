@@ -32,6 +32,8 @@ public class EntityManager {
     public void tick(){
         for(Entity e : entities){
             e.tick();
+            if(!e.isAlive())
+                entities.remove(e);
         }
         entities.sort(rederSort);
     }
