@@ -26,11 +26,6 @@ public class Game implements Runnable{
     private BufferStrategy bs;
     private Graphics g;
 
-    //UiManageruri
-
-    public UIManager uiManagerMenu;
-    public UIManager uiManagerHelp;
-
     //States
     public State gameState;
     public State menuState;
@@ -67,16 +62,12 @@ public class Game implements Runnable{
         handler = new Handler(this);
         gameCamera = new GameCamera(handler,0,0);
 
-
-        this.uiManagerMenu = new UIManager(handler);
-        this.uiManagerHelp = new UIManager(handler);
-
         gameState = new GameState(handler);
-        menuState = new MenuState(handler,uiManagerMenu);
-        helpState = new HelpState(handler,uiManagerHelp);
+        menuState = new MenuState(handler);
+        helpState = new HelpState(handler);
 
         State.setState(menuState);
-        handler.getMouseManager().setUiManager(uiManagerMenu);
+        handler.getMouseManager().setUiManager(menuState.getUiManager());
     }
 
     private void tick(){

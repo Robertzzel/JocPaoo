@@ -25,7 +25,7 @@ public class Tree extends StaticEntity {
             if(GameState.lvl == 4)
                 GameState.lvl = 1;
             State.setState(handler.getGame().menuState);
-            handler.getGame().getMouseManager().setUiManager(handler.getGame().uiManagerMenu);
+            handler.getGame().getMouseManager().setUiManager(handler.getGame().menuState.getUiManager());
 
             handler.getWorld().loadWorld("res/worlds/world" + GameState.lvl + ".txt");
             handler.getWorld().getEntityManager().getPlayer().setX(handler.getWorld().getSpawnX());

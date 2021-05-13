@@ -42,7 +42,7 @@ public class Timer {
     private void finalClock(){
         resetClock();
         State.setState(handler.getGame().menuState);
-        handler.getMouseManager().setUiManager(handler.getGame().uiManagerMenu);
+        handler.getMouseManager().setUiManager(handler.getGame().menuState.getUiManager());
     }
 
     private void resetClock(){

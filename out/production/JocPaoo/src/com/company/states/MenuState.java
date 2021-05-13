@@ -15,9 +15,9 @@ public class MenuState extends State {
 
     private UIManager uiManager;
 
-    public MenuState(Handler handler,UIManager uimanager){
+    public MenuState(Handler handler){
         super(handler);
-        this.uiManager = uimanager;
+        this.uiManager = new UIManager(handler);
         handler.getMouseManager().setUiManager(uiManager);
 
         uiManager.addObject(new UIImageButton(565,300,150,64, Assets.startBtn, new ClickListener(){ //START
@@ -31,7 +31,7 @@ public class MenuState extends State {
         uiManager.addObject(new UIImageButton(565,366,150,64, Assets.helpBtn, new ClickListener(){ //HELP
             @Override
             public void onClick() {
-                handler.getMouseManager().setUiManager(handler.getGame().uiManagerHelp);
+                handler.getMouseManager().setUiManager(handler.getGame().helpState.getUiManager());
                 State.setState(handler.getGame().helpState);
             }
         }));
@@ -56,5 +56,13 @@ public class MenuState extends State {
     @Override
     public void render(Graphics g) {
         uiManager.render(g);
+    }
+
+    public UIManager getUiManager() {
+        return uiManager;
+    }
+
+    public void setUiManager(UIManager uiManager) {
+        this.uiManager = uiManager;
     }
 }

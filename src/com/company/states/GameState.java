@@ -37,7 +37,7 @@ public class GameState extends State {
     public void verifEscapeKey(){
         if(handler.getKeyManager().esc){
             State.setState(handler.getGame().menuState);
-            handler.getMouseManager().setUiManager(handler.getGame().uiManagerMenu);
+            handler.getMouseManager().setUiManager(handler.getGame().menuState.getUiManager());
         }
     }
 }

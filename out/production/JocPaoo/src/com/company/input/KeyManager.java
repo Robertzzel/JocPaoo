@@ -1,5 +1,6 @@
 package com.company.input;
 
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -7,6 +8,7 @@ public class KeyManager implements KeyListener {
 
     private boolean[] keys;
     public boolean up, down, left, right, esc;
+    public boolean attack;
 
     public KeyManager(){
         keys = new boolean[256];
@@ -18,6 +20,7 @@ public class KeyManager implements KeyListener {
         left = keys[KeyEvent.VK_LEFT];
         right = keys[KeyEvent.VK_RIGHT];
         esc = keys[KeyEvent.VK_ESCAPE];
+        attack = keys[KeyEvent.VK_SPACE];
     }
 
     @Override

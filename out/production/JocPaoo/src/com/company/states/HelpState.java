@@ -14,9 +14,9 @@ public class HelpState extends State{
 
     private UIManager uiManager;
 
-    public HelpState(Handler handler, UIManager uiManager){
+    public HelpState(Handler handler){
         super(handler);
-        this.uiManager = uiManager;
+        this.uiManager = new UIManager(handler);
         handler.getMouseManager().setUiManager(uiManager);
 
         UIImage image = new UIImage(0,0,100,100, Assets.startBtn[0]);
@@ -37,7 +37,18 @@ public class HelpState extends State{
     public void verifEscapeKey(){
         if(handler.getKeyManager().esc){
             State.setState(handler.getGame().menuState);
-            handler.getMouseManager().setUiManager(handler.getGame().uiManagerMenu);
+            //handler.getMouseManager().setUiManager(handler.getGame().uiManagerMenu);
+            handler.getMouseManager().setUiManager(handler.getGame().menuState.getUiManager());
         }
+    }
+
+    @Override
+    public UIManager getUiManager() {
+        return uiManager;
+    }
+
+    @Override
+    public void setUiManager(UIManager uiManager) {
+        this.uiManager = uiManager;
     }
 }
