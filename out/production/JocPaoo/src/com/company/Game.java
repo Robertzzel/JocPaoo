@@ -120,7 +120,6 @@ public class Game implements Runnable{
             }
             //verifica fps
             if(timer >= 1000000000){
-                System.out.print("\nTicks and framesL "+ticks);
                 ticks=0;
                 timer=0;
             }

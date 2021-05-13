@@ -52,7 +52,6 @@ public class Timer {
 
     private void actionOnSecond(String timp){
         handler.getGame().getDispaly().mesaj.setText(timp);
-        System.out.println("schimbare");
     }
 
 }

@@ -3,6 +3,9 @@ package com.company.worlds;
 import com.company.Handler;
 import com.company.entities.EntityManager;
 import com.company.entities.Player;
+import com.company.gfx.Assets;
+import com.company.staticEntities.Bush1;
+import com.company.staticEntities.Bush2;
 import com.company.staticEntities.Tree;
 import com.company.tiles.Tile;
 import com.company.utils.Utils;
@@ -13,6 +16,7 @@ public class World {
     private Handler handler;
     private int width, height;  //marimea hartii
     private int spawnX, spawnY;  //punctul de spanw pentru player
+    private int nrMobi;
 
     private int[][] tiles;  //matrice pentru harta
 
@@ -23,17 +27,21 @@ public class World {
     public World(Handler handler, String path){
         this.handler = handler;
         entityManager = new EntityManager(handler,new Player(handler,100,100));
-        entityManager.addEntity(new Tree(handler,570,10));
+        //entityManager.addEntity(new Tree(handler,570,10));
+        //entityManager.addEntity(new Bush1(handler,300,300,1));
+        //entityManager.addEntity(new Bush2(handler,400,300,3));
 
         loadWorld(path);
 
         entityManager.getPlayer().setX(spawnX);
         entityManager.getPlayer().setY(spawnY);
     }
+
     public void tick()
     {
         entityManager.tick(); //tick la toate entitatile
     }
+
     public void render (Graphics g)
     {
         int xStart = (int) Math.max(0,handler.getGameCamera().getxOffset() / Tile.TILEWIDTH); //marginile dalelor care se vad pe ecran (singurele care ar trebui randate, deoarece doar ele se vad pe ecran)
@@ -70,16 +78,43 @@ public class World {
         width = Utils.parseInt(tokens[0]); //marimea hartii
         height = Utils.parseInt(tokens[1]);
 
-        spawnX = Utils.parseInt(tokens[2]); //punctul de spanw pentru player
-        spawnY = Utils.parseInt(tokens[3]);
+        spawnX = Utils.parseInt(tokens[2])* Assets.DEFAULT_TILE_WIDTH; //punctul de spanw pentru player
+        spawnY = Utils.parseInt(tokens[3])* Assets.DEFAULT_TILE_HEIGHT;
+
+        nrMobi = Utils.parseInt(tokens[4]);
+        System.out.println("Numar de mobi: "+nrMobi);
 
         tiles = new int[width][height];
-        for(int y = 0;y<height;y++)
+        for(int y = 0;y<height;y++){
             for(int x=0;x<width;x++)
             {
-                tiles[x][y] = Utils.parseInt(tokens[(x+y * width) + 4 ]);
+                tiles[x][y] = Utils.parseInt(tokens[(x+y * width) + 5 ]);
             }
+        }
+
+        int mobsIndex = 5 + height*width;
+        for(int i=0;i<nrMobi;i++){
+            int startingLinePosition = mobsIndex+(4*i);
+            int type = Utils.parseInt(tokens[startingLinePosition]);
+            int coordX = Utils.parseInt(tokens[startingLinePosition+1])*Assets.DEFAULT_TILE_WIDTH;
+            int coordY = Utils.parseInt(tokens[startingLinePosition+2])*Assets.DEFAULT_TILE_HEIGHT;
+            int health = Utils.parseInt(tokens[startingLinePosition+3]);
+
+            System.out.println(type+" "+coordX+" "+coordY+" "+health);
+
+            if(type == 1){
+                Bush1 bush = new Bush1(handler,coordX,coordY,health);
+                entityManager.addEntity(bush);
+            }else if(type == 2){
+                Bush2 bush = new Bush2(handler,coordX,coordY,health);
+                entityManager.addEntity(bush);
+            }else if(type == 3){
+                entityManager.addEntity(new Tree(handler,coordX,coordY));
+            }else{
+            }
+        }
     }
+
     public int getWidth(){
         return width;
     }

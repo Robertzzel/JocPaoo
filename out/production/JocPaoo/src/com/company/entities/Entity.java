@@ -25,6 +25,7 @@ public abstract class Entity {
 
         bounds = new Rectangle(0,0,width,height);
     }
+
     public void hurt(int dmg){
         health -= dmg;
         if(health<=0){

@@ -8,16 +8,25 @@ import java.awt.image.BufferedImage;
 public class Assets {
 
     public static final int width = 32 , height = 32;
+    public static final int DEFAULT_TILE_WIDTH=64,DEFAULT_TILE_HEIGHT=64;
     public static BufferedImage grass, stone, tree, brad, boat, player_still;
     public static BufferedImage[] player_down, player_up, player_left, player_right;
     public static BufferedImage startBtn[], helpBtn[], exitBtn[];
+    public static BufferedImage bush1,bush2,treeEntity;
 
     public static void init(){
 
         SpriteSheet playerSheet = new SpriteSheet(ImageLoader.loadImage("/textures/player.png"));
         SpriteSheet worldSheet = new SpriteSheet(ImageLoader.loadImage("/textures/world.png"));
         SpriteSheet btnSheet = new SpriteSheet(ImageLoader.loadImage("/textures/sheetButoane.png"));
+        SpriteSheet entitysSheet = new SpriteSheet(ImageLoader.loadImage("/textures/worldTra.png"));
 
+        //Enitityes
+        treeEntity = entitysSheet.crop(10*16,3*16,3*16,3*16);
+        bush1 = entitysSheet.crop(8*16,4*16,16,16);
+        bush2 = entitysSheet.crop(8*16,8*16,16,16);
+
+        //BUTTONS
         startBtn = new BufferedImage[2];
         startBtn[0] = btnSheet.crop(0,192,150,48);
         startBtn[1] = btnSheet.crop(0,240,150,48);
@@ -30,11 +39,14 @@ public class Assets {
         exitBtn[1] = btnSheet.crop(0,0,150,48);
         exitBtn[0] = btnSheet.crop(0,48,150,48);
 
+        //TILES
         grass = worldSheet.crop(269,112,width,height);
         tree = worldSheet.crop(209,112,16*3,16*3);
         brad = worldSheet.crop(197,208,16*3,16*3);
         stone = worldSheet.crop(315,190,13*3,13*3);
 
+
+        //PLAYER
         player_still = playerSheet.crop(3*width-5,0,width,height);
 
         player_down = new BufferedImage[3];

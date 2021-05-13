@@ -9,4 +9,5 @@ public abstract class StaticEntity extends Entity {
         super(handler,x,y,width,height);
     }
 
+
 }

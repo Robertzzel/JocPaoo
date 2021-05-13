@@ -1,3 +1,9 @@
-prima linie are marimea hartii(tiles)
-a doua linie are coodonatele de spawn a caracterului
-urmatoarele linii sunt lumea
+linia 1: marimea hartii(in tileuri) -> coloane(c),linii(l)
+
+linia 2: coord de start caracter(in tileuri) -> x,y
+
+linia 3: nr de entitati generate(nrEntitati)
+
+urmatoarele l linii : harta propriu-zisa
+
+urmatoarele nrEntitati linii : tipEnititate,x,y,viata

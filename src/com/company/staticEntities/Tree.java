@@ -26,10 +26,13 @@ public class Tree extends StaticEntity {
     public void nextLevel(){
         if(this.checkEntityCollisions(0,10)){
             GameState.lvl++;
-            if(GameState.lvl == 4)
+            System.out.println("Nivelul:"+GameState.lvl);
+            if(GameState.lvl == 4){
+                State.setState(handler.getGame().menuState);
+                handler.getGame().getMouseManager().setUiManager(handler.getGame().menuState.getUiManager());
                 GameState.lvl = 1;
-            State.setState(handler.getGame().menuState);
-            handler.getGame().getMouseManager().setUiManager(handler.getGame().menuState.getUiManager());
+                return;
+            }
 
             handler.getWorld().loadWorld("res/worlds/world" + GameState.lvl + ".txt");
             handler.getWorld().getEntityManager().getPlayer().setX(handler.getWorld().getSpawnX());

@@ -19,7 +19,7 @@ public class HelpState extends State{
         this.uiManager = new UIManager(handler);
         handler.getMouseManager().setUiManager(uiManager);
 
-        UIImage image = new UIImage(0,0,100,100, Assets.startBtn[0]);
+        UIImage image = new UIImage(0,0,100,100, Assets.bush2);
         uiManager.addObject(image);
     }
 
