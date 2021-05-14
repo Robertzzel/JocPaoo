@@ -73,6 +73,7 @@ public class World {
     }
     public void loadWorld(String path) {
 
+
         String file = Utils.loadFileAsString(path); //clasa declarata in utils si contine metoda ajutatoare pentru program
         //loadFileAsString incarca continutul din fisierul dat la path
 
@@ -88,6 +89,7 @@ public class World {
 
         minute = Utils.parseInt(tokens[5]);
         secunde = Utils.parseInt(tokens[6]);
+        timer = new Timer(handler,minute,secunde);
 
         tiles = new int[width][height];
         for(int y = 0;y<height;y++){
@@ -117,8 +119,6 @@ public class World {
                 entityManager.addEntity(new FinishGrass(handler,coordX,coordY));
             }else{ }
         }
-
-        timer = new Timer(handler,minute,secunde);
     }
 
     public int getWidth(){

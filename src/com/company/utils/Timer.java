@@ -3,6 +3,8 @@ package com.company.utils;
 import com.company.Handler;
 import com.company.states.State;
 
+import java.awt.*;
+
 public class Timer {
 
     private int min,sec;
@@ -10,7 +12,7 @@ public class Timer {
     private Handler handler;
     private long currentTime;
 
-    public Timer(Handler handler, int min, int sec){
+    public Timer(Handler handler,int min, int sec){
         this.min = min;
         this.sec = sec;
         this.backupMin = min;

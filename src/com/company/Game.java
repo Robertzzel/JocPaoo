@@ -165,4 +165,8 @@ public class Game implements Runnable{
     public Display getDispaly() {
         return dispaly;
     }
+
+    public Graphics getG() {
+        return g;
+    }
 }

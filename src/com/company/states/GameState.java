@@ -29,6 +29,7 @@ public class GameState extends State {
     @Override
     public void render(Graphics g) {
         world.render(g);
+        //g.drawString("Inceput",0,200);
     }
 
     public void verifEscapeKey(){

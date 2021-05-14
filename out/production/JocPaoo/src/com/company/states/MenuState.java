@@ -43,8 +43,11 @@ public class MenuState extends State {
                 handler.getGame().getDispaly().getFrame().dispatchEvent(new WindowEvent(handler.getGame().getDispaly().getFrame(), WindowEvent.WINDOW_CLOSING));
             }
         }));
+    }
 
-
+    public void drawBackground(Graphics g){
+        g.setColor(Color.DARK_GRAY);
+        g.fillRect(0,0,handler.getWidth(),handler.getHeight());
     }
 
     @Override
@@ -54,6 +57,7 @@ public class MenuState extends State {
 
     @Override
     public void render(Graphics g) {
+        drawBackground(g);
         uiManager.render(g);
     }
 
