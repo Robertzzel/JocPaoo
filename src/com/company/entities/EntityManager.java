@@ -30,7 +30,6 @@ public class EntityManager {
     }
 
     public void tick(){
-        System.out.println(entities.size());
         for(int i=0;i<entities.size();i++){
             entities.get(i).tick();
             if(!entities.get(i).alive){

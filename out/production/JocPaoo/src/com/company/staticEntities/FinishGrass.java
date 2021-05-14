@@ -23,9 +23,10 @@ public class FinishGrass extends  StaticEntity{
     }
 
     public void nextLevel(){
-        if(this.checkEntityCollisions(0,10)){
+        if(this.checkPlayerCollisions(0,10)){
             GameState.lvl++;
             System.out.println("Nivelul:"+GameState.lvl);
+
             if(GameState.lvl == 4){
                 State.setState(handler.getGame().menuState);
                 handler.getGame().getMouseManager().setUiManager(handler.getGame().menuState.getUiManager());
@@ -50,5 +51,6 @@ public class FinishGrass extends  StaticEntity{
     @Override
     public void render(Graphics g) {
         g.drawImage(Assets.grass,(int)(x - handler.getGameCamera().getxOffset()),(int)(y-handler.getGameCamera().getyOffset()),width,height,null);
+        //g.drawRect((int)(x - handler.getGameCamera().getxOffset()),(int)(y-handler.getGameCamera().getyOffset()),10,10);
     }
 }

@@ -23,9 +23,9 @@ public class Bush1 extends StaticEntity {
         super(handler, x, y, Tile.TILEWIDTH, Tile.TILEHEIGHT);
 
         super.health = health;
-        bounds.x = 14;
+        bounds.x = 0;
         bounds.y = 23;
-        bounds.width = width-30;
+        bounds.width = width;
         bounds.height = height-20;
     }
 
@@ -41,7 +41,6 @@ public class Bush1 extends StaticEntity {
     @Override
     public void render(Graphics g) {
         g.drawImage(Assets.bush1,(int)(x - handler.getGameCamera().getxOffset()),(int)(y-handler.getGameCamera().getyOffset()),width,height,null);
-        g.drawRect((int)(x - handler.getGameCamera().getxOffset()+bounds.x),(int)(y-handler.getGameCamera().getyOffset()+bounds.y), bounds.width, bounds.height);
     }
 
 }

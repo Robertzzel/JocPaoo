@@ -52,6 +52,16 @@ public abstract class Entity {
         return false;
     }
 
+    public boolean checkPlayerCollisions(float xOffset, float yOffset){
+        for(Entity e: handler.getWorld().getEntityManager().getEntities()){
+            if(e.equals(this))
+                continue;
+            if(e.getCollisionBounds(0f,0f).intersects(getCollisionBounds(xOffset,yOffset)) && e.getClass() == handler.getWorld().getEntityManager().getPlayer().getClass())
+                return true;
+        }
+        return false;
+    }
+
     public void setX(float x) {
         this.x = x;
     }
