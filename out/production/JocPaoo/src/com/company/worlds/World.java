@@ -30,10 +30,7 @@ public class World {
 
     public World(Handler handler, String path){
         this.handler = handler;
-        entityManager = new EntityManager(handler,new Player(handler,100,100));
-        //entityManager.addEntity(new Tree(handler,570,10));
-        //entityManager.addEntity(new Bush1(handler,300,300,1));
-        //entityManager.addEntity(new Bush2(handler,400,300,3));
+        entityManager = new EntityManager(handler,new Player(handler,100,100,2));
 
         loadWorld(path);
 

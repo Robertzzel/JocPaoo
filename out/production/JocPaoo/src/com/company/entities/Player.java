@@ -12,19 +12,21 @@ public class Player extends Creature {
 
     private Animation animaDown, animaUp, animaLeft, animaRight;
     private long lastAttackTimer, attackCooldown = 500,attackTimer=attackCooldown;
+    private int speed;
 
-    public Player(Handler handler, float x, float y){
+    public Player(Handler handler, float x, float y, int speed){
         super(handler,x,y,48,48);
 
+        this.speed = speed;
         bounds.x = 14;//relativ la patratelul cu imginea
         bounds.y = 29;
         bounds.width = 24;
         bounds.height = 24;
 
-        animaDown = new Animation(300,Assets.player_down);
-        animaUp = new Animation(300,Assets.player_up);
-        animaLeft = new Animation(300,Assets.player_left);
-        animaRight = new Animation(300,Assets.player_right);
+        animaDown = new Animation(100,Assets.player_down);
+        animaUp = new Animation(100,Assets.player_up);
+        animaLeft = new Animation(100,Assets.player_left);
+        animaRight = new Animation(100,Assets.player_right);
 
     }
 
@@ -114,12 +116,12 @@ public class Player extends Creature {
     }
 
     private BufferedImage getCurrendAnimationFrame(){
-        if(xMove < 0){
-            return animaLeft.getCurrentFrame();
+        if(yMove < 0){
+            return animaUp.getCurrentFrame();
         }else if(xMove >0){
             return animaRight.getCurrentFrame();
-        }else if(yMove < 0){
-            return animaUp.getCurrentFrame();
+        }else if(xMove < 0){
+            return animaLeft.getCurrentFrame();
         }else if(yMove > 0){
             return animaDown.getCurrentFrame();
         }else{
