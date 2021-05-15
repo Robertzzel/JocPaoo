@@ -29,10 +29,6 @@ public class Bush1 extends StaticEntity {
         bounds.height = height-20;
     }
 
-    public void die(){
-        System.out.println("BUsh DIED");
-    }
-
     @Override
     public void tick() {
 

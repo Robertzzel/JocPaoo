@@ -18,9 +18,6 @@ public class FinishGrass extends  StaticEntity{
         bounds.height = (int) (height-height/1.5);
     }
 
-    public void die(){
-        System.out.println("TREE DIED");
-    }
 
     public void nextLevel(){
         if(this.checkPlayerCollisions(0,10)){
@@ -28,18 +25,16 @@ public class FinishGrass extends  StaticEntity{
             System.out.println("Nivelul:"+GameState.lvl);
 
             if(GameState.lvl == 4){
-                State.setState(handler.getGame().menuState);
-                handler.getGame().getMouseManager().setUiManager(handler.getGame().menuState.getUiManager());
-                GameState.lvl = 1;
-                return;
+                State.setState(handler.getGame().finishState);
+                handler.getGame().getMouseManager().setUiManager(handler.getGame().finishState.getUiManager());
+                handler.getGame().getDispaly().mesaj.setBackground(Assets.pewter);
+            }else {
+                GameState.secRamase += handler.getWorld().getTimer().getRemainingSeconds();
+                handler.getWorld().getEntityManager().deleteAll();
+                handler.getWorld().loadWorld("res/worlds/world" + GameState.lvl + ".txt");
+                handler.getGame().getDispaly().mesaj.setBackground(Assets.pewter);
+                System.out.println("Incarcare mapa " + GameState.lvl);
             }
-
-
-            handler.getWorld().getEntityManager().deleteAll();
-            handler.getWorld().loadWorld("res/worlds/world" + GameState.lvl + ".txt");
-            System.out.println("Incarcare mapa "+ GameState.lvl);
-            handler.getWorld().getEntityManager().getPlayer().setX(handler.getWorld().getSpawnX());
-            handler.getWorld().getEntityManager().getPlayer().setY(handler.getWorld().getSpawnY());
         }
     }
 

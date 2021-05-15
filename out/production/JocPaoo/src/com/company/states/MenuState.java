@@ -23,16 +23,14 @@ public class MenuState extends State {
         uiManager.addObject(new UIImageButton(565,300,150,64, Assets.startBtn, new ClickListener(){ //START
             @Override
             public void onClick() {
-                handler.getMouseManager().setUiManager(null);
-                State.setState(handler.getGame().gameState);
+                swichState("gameState");
             }
         }));
 
         uiManager.addObject(new UIImageButton(565,366,150,64, Assets.helpBtn, new ClickListener(){ //HELP
             @Override
             public void onClick() {
-                handler.getMouseManager().setUiManager(handler.getGame().helpState.getUiManager());
-                State.setState(handler.getGame().helpState);
+                swichState("helpState");
             }
         }));
 
@@ -46,7 +44,7 @@ public class MenuState extends State {
     }
 
     public void drawBackground(Graphics g){
-        g.setColor(Color.DARK_GRAY);
+        g.setColor(Assets.pewter);
         g.fillRect(0,0,handler.getWidth(),handler.getHeight());
     }
 

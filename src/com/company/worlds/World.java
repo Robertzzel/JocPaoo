@@ -30,12 +30,12 @@ public class World {
 
     public World(Handler handler, String path){
         this.handler = handler;
-        entityManager = new EntityManager(handler,new Player(handler,100,100,2));
+        entityManager = new EntityManager(handler,new Player(handler,100,100,10));
 
         loadWorld(path);
 
-        entityManager.getPlayer().setX(spawnX);
-        entityManager.getPlayer().setY(spawnY);
+        //entityManager.getPlayer().setX(spawnX);
+        //entityManager.getPlayer().setY(spawnY);
     }
 
     public void tick()
@@ -119,6 +119,9 @@ public class World {
                 entityManager.addEntity(new FinishGrass(handler,coordX,coordY));
             }else{ }
         }
+
+        getEntityManager().getPlayer().setX(getSpawnX());
+        getEntityManager().getPlayer().setY(getSpawnY());
     }
 
     public int getWidth(){
@@ -147,5 +150,9 @@ public class World {
 
     public void setSpawnY(int spawnY) {
         this.spawnY = spawnY;
+    }
+
+    public Timer getTimer() {
+        return timer;
     }
 }

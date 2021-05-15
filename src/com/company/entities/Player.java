@@ -30,7 +30,7 @@ public class Player extends Creature {
 
     }
 
-    public void die(){
+    public static void die(){
         System.out.println("GAME OVER");
     }
 

@@ -3,6 +3,7 @@ package com.company.gfx;
 import com.company.gfx.ImageLoader;
 import com.company.gfx.SpriteSheet;
 
+import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class Assets {
@@ -13,6 +14,14 @@ public class Assets {
     public static BufferedImage[] player_down, player_up, player_left, player_right;
     public static BufferedImage startBtn[], helpBtn[], exitBtn[];
     public static BufferedImage bush1,bush2,treeEntity;
+    public static Font fontSubtitle = new Font("Comic Sans MS", Font.BOLD, 25);
+    public static Font fontDetails = new Font("Comic Sans MS", Font.BOLD, 15);
+    public static Color pewter = new Color(12, 45, 72),
+                        green = new Color(20,93,160),
+                        olive = new Color(46,139,192),
+                        oliveGreen = new Color(177,212,224);
+
+    public static BufferedImage winDog,loseDog;
 
     public static void init(){
 
@@ -20,6 +29,10 @@ public class Assets {
         SpriteSheet worldSheet = new SpriteSheet(ImageLoader.loadImage("/textures/world.png"));
         SpriteSheet btnSheet = new SpriteSheet(ImageLoader.loadImage("/textures/sheetButoane.png"));
         SpriteSheet entitysSheet = new SpriteSheet(ImageLoader.loadImage("/textures/worldTra.png"));
+
+        //DOGS
+        winDog = ImageLoader.loadImage("/textures/winDog.png");
+        loseDog = ImageLoader.loadImage("/textures/loseDog.png");
 
         //Enitityes
         treeEntity = entitysSheet.crop(10*16,3*16,3*16,3*16);

@@ -10,6 +10,9 @@ import com.company.gfx.Assets;
 import javax.swing.event.CaretListener;
 import java.awt.*;
 
+import static com.company.gfx.Assets.fontDetails;
+import static com.company.gfx.Assets.fontSubtitle;
+
 public class HelpState extends State{
 
     private UIManager uiManager;
@@ -47,31 +50,28 @@ public class HelpState extends State{
 
 
     private void drawScor(Graphics g,int x,int y){
-        Font fontSubtitle = new Font("Comic Sans MS", Font.BOLD, 25);
-        Font fontDetails = new Font("Comic Sans MS", Font.BOLD, 15);
         int width = handler.getWidth()/2;
         int height = handler.getHeight()/2;
 
-        g.setColor(Color.YELLOW);
+        g.setColor(Assets.olive);
         g.setFont(fontSubtitle);
         g.drawString("Scor",x+(int)(width/2)-25,y);
 
-        g.setColor(Color.black);
+        g.setColor(Assets.oliveGreen);
         g.setFont(fontDetails);
         g.drawString("Scor = (5*timRamas(in secunde)+6*tufeDistruse)/11",(int)(x+width/5),(int)(y+height/3));
     }
 
     private void drawTerrain(Graphics g,int x,int y){
-        Font fontSubtitle = new Font("Comic Sans MS", Font.BOLD, 25);
-        Font fontDetails = new Font("Comic Sans MS", Font.BOLD, 15);
+
         int width = handler.getWidth()/2;
         int height = handler.getHeight()/2;
 
-        g.setColor(Color.YELLOW);
-        g.setFont(fontSubtitle);
+        g.setColor(Assets.olive);
+        g.setFont(Assets.fontSubtitle);
         g.drawString("Terrain",x+(int)(width/2)-25,y);
 
-        g.setColor(Color.black);
+        g.setColor(Assets.oliveGreen);
         g.setFont(fontDetails);
         g.drawImage(Assets.tree,x+width/4,y+40,40,40,null);
         g.drawImage(Assets.brad,x+width/4+45,y+40,40,40,null);
@@ -88,39 +88,35 @@ public class HelpState extends State{
     private void drawTitlu(Graphics g,int x,int y){
         Font font1 = new Font("Comic Sans MS", Font.BOLD, 40);
 
-        g.setColor(new Color(89,60,31));
+        g.setColor(Assets.green);
         g.setFont(font1);
         g.drawString("Run Bob, run", x, y);
 
     }
 
     private void drawScop(Graphics g,int x,int y){
-        Font fontSubtitle = new Font("Comic Sans MS", Font.BOLD, 25);
-        Font fontDetails = new Font("Comic Sans MS", Font.BOLD, 15);
         int width = handler.getWidth()/2;
         int height = handler.getHeight()/2;
 
-        g.setColor(Color.YELLOW);
+        g.setColor(Assets.olive);
         g.setFont(fontSubtitle);
         g.drawString("Scop",x+width/2,y);
 
-        g.setColor(Color.black);
+        g.setColor(Assets.oliveGreen);
         g.setFont(fontDetails);
         g.drawString("Ajungerea la final inainte de a",(int)(x+width/2.7),(int)(y+height/3));
         g.drawString("se scurge tot timpul din timer",(int)(x+width/2.7),(int)(y+height/3)+20);
     }
 
     private void drawControls(Graphics g,int x,int y){
-        Font fontSubtitle = new Font("Comic Sans MS", Font.BOLD, 25);
-        Font fontDetails = new Font("Comic Sans MS", Font.BOLD, 15);
         int width = handler.getWidth()/2;
         int height = handler.getHeight()/2;
 
-        g.setColor(Color.YELLOW);
+        g.setColor(Assets.olive);
         g.setFont(fontSubtitle);
         g.drawString("Controls",x+(int)(width/2.5),y);
 
-        g.setColor(Color.black);
+        g.setColor(Assets.oliveGreen);
         g.setFont(fontDetails);
         g.drawString("KeyUp = move up",(int)(x+width/2.7),(int)(y+height/3)-40);
         g.drawString("KeuDOwn = move down",(int)(x+width/2.7),(int)(y+height/3)-20);
@@ -130,7 +126,7 @@ public class HelpState extends State{
     }
 
     public void drawBackground(Graphics g){
-        g.setColor(Color.DARK_GRAY);
+        g.setColor(Assets.pewter);
         g.fillRect(0,0,handler.getWidth(),handler.getHeight());
     }
 

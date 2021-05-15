@@ -2,7 +2,6 @@ package com.company.utils;
 
 import com.company.Handler;
 import com.company.states.State;
-
 import java.awt.*;
 
 public class Timer {
@@ -50,6 +49,10 @@ public class Timer {
         this.min = this.backupMin;
         this.sec = this.backupSec;
         this.currentTime = System.currentTimeMillis();
+    }
+
+    public int getRemainingSeconds(){
+        return min*60+sec;
     }
 
     private void resetClock(int min, int sec){

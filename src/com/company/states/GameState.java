@@ -1,9 +1,6 @@
 package com.company.states;
 
 import com.company.Handler;
-import com.company.UI.UIManager;
-import com.company.entities.Player;
-import com.company.utils.Timer;
 import com.company.worlds.World;
 
 import java.awt.*;
@@ -11,7 +8,8 @@ import java.awt.*;
 public class GameState extends State {
 
     public static int lvl = 1;
-    private Player player;
+    public static int secRamase = 0;
+    public static int killedMobs = 0;
     private World world;
 
     public GameState(Handler handler){
@@ -29,13 +27,11 @@ public class GameState extends State {
     @Override
     public void render(Graphics g) {
         world.render(g);
-        //g.drawString("Inceput",0,200);
     }
 
     public void verifEscapeKey(){
         if(handler.getKeyManager().esc){
-            State.setState(handler.getGame().menuState);
-            handler.getMouseManager().setUiManager(handler.getGame().menuState.getUiManager());
+            swichState("menuState");
         }
     }
 }

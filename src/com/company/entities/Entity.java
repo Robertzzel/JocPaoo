@@ -2,6 +2,7 @@ package com.company.entities;
 
 import com.company.Game;
 import com.company.Handler;
+import com.company.states.GameState;
 
 import java.awt.*;
 
@@ -34,7 +35,9 @@ public abstract class Entity {
         }
     }
 
-    public abstract void die();
+    public static void die(){
+        GameState.killedMobs++;
+    }
     public abstract void tick();
     public abstract void render(Graphics g);
 

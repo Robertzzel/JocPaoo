@@ -5,10 +5,7 @@ import com.company.gfx.Assets;
 import com.company.gfx.GameCamera;
 import com.company.input.KeyManager;
 import com.company.input.MouseManager;
-import com.company.states.GameState;
-import com.company.states.HelpState;
-import com.company.states.MenuState;
-import com.company.states.State;
+import com.company.states.*;
 
 import java.awt.*;
 import java.awt.event.WindowEvent;
@@ -30,6 +27,7 @@ public class Game implements Runnable{
     public State gameState;
     public State menuState;
     public State helpState;
+    public State finishState;
 
     //Inout
     private KeyManager keyManager;
@@ -65,9 +63,10 @@ public class Game implements Runnable{
         gameState = new GameState(handler);
         menuState = new MenuState(handler);
         helpState = new HelpState(handler);
+        finishState = new FinishState(handler);
 
-        State.setState(menuState);
-        handler.getMouseManager().setUiManager(menuState.getUiManager());
+        State.setState(finishState);
+        handler.getMouseManager().setUiManager(finishState.getUiManager());
     }
 
     private void tick(){

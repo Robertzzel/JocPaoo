@@ -19,10 +19,6 @@ public class Tree extends StaticEntity {
         bounds.height = (int) (height-height/1.5);
     }
 
-    public void die(){
-        System.out.println("TREE DIED");
-    }
-
     public void nextLevel(){
         if(this.checkEntityCollisions(0,10)){
             GameState.lvl++;

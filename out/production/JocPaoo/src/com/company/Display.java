@@ -1,5 +1,7 @@
 package com.company;
 
+import com.company.gfx.Assets;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -28,7 +30,9 @@ public class Display {
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
 
-        mesaj.setSize(100,100);
+        mesaj.setSize(200,200);
+        mesaj.setOpaque(true);
+        mesaj.setBackground(Assets.pewter);
         frame.add(mesaj);
         frame.pack();
 
