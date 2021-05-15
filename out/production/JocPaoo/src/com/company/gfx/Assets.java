@@ -16,6 +16,7 @@ public class Assets {
     public static BufferedImage bush1,bush2,treeEntity;
     public static Font fontSubtitle = new Font("Comic Sans MS", Font.BOLD, 25);
     public static Font fontDetails = new Font("Comic Sans MS", Font.BOLD, 15);
+    public static Font fontTitle = new Font("Comic Sans MS", Font.BOLD, 40);
     public static Color pewter = new Color(12, 45, 72),
                         green = new Color(20,93,160),
                         olive = new Color(46,139,192),

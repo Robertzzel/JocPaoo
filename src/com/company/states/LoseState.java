@@ -6,11 +6,11 @@ import com.company.gfx.Assets;
 
 import java.awt.*;
 
-public class FinishState extends State{
+public class LoseState extends State{
 
     private UIManager uiManager;
 
-    public FinishState(Handler handler) {
+    public LoseState(Handler handler) {
         super(handler);
         this.uiManager = new UIManager(handler);
         handler.getMouseManager().setUiManager(uiManager);
@@ -36,10 +36,8 @@ public class FinishState extends State{
     public void render(Graphics g) {
         uiManager.render(g);
         drawBackground(g);
-        drawCongrats(g,400,100);
-        drawDog(g,500,200);
-        drawScor(g,570,500);
-
+        drawMesage(g,350,250);
+        drawDog(g,525,350);
     }
 
     public void drawBackground(Graphics g){
@@ -47,21 +45,15 @@ public class FinishState extends State{
         g.fillRect(0,0,handler.getWidth(),handler.getHeight());
     }
 
-    public void drawCongrats(Graphics g,int x, int y){
+    public void drawMesage(Graphics g,int x, int y){
         g.setColor(Assets.olive);
         g.setFont(Assets.fontTitle);
-        String mesaj = "Cougratulations!";
+        String mesaj = "Nu e nimic, mai incearca!";
         g.drawString(mesaj,x, y);
     }
 
     public void drawDog(Graphics g,int x,int y){
-        g.drawImage(Assets.winDog,x,y,200,200,null);
-    }
-
-    public void drawScor(Graphics g,int x, int y){
-        g.setColor(Assets.green);
-        g.setFont(Assets.fontSubtitle);
-        g.drawString("Scor: "+(GameState.secRamase * 6 + GameState.killedMobs*5)/11+"",x,y);
+        g.drawImage(Assets.loseDog,x,y,200,200,null);
     }
 
     @Override
@@ -73,4 +65,5 @@ public class FinishState extends State{
     public void setUiManager(UIManager uiManager) {
         this.uiManager = uiManager;
     }
+
 }

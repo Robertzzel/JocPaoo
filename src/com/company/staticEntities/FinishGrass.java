@@ -32,7 +32,7 @@ public class FinishGrass extends  StaticEntity{
                 GameState.secRamase += handler.getWorld().getTimer().getRemainingSeconds();
                 handler.getWorld().getEntityManager().deleteAll();
                 handler.getWorld().loadWorld("res/worlds/world" + GameState.lvl + ".txt");
-                handler.getGame().getDispaly().mesaj.setBackground(Assets.pewter);
+                handler.getGame().getDispaly().mesaj.setBackground(new Color(25, 117, 84));
                 System.out.println("Incarcare mapa " + GameState.lvl);
             }
         }

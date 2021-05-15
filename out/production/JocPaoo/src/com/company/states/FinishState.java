@@ -36,20 +36,20 @@ public class FinishState extends State{
     public void render(Graphics g) {
         uiManager.render(g);
         drawBackground(g);
-        g.setColor(Color.black);
-        g.setFont(Assets.fontSubtitle);
-        drawCongrats(g,100,100);
-        drawDog(g,200,200);
-        drawScor(g,300,300);
+        drawCongrats(g,400,100);
+        drawDog(g,500,200);
+        drawScor(g,570,500);
 
     }
 
     public void drawBackground(Graphics g){
-        g.setColor(Color.DARK_GRAY);
+        g.setColor(Assets.pewter);
         g.fillRect(0,0,handler.getWidth(),handler.getHeight());
     }
 
     public void drawCongrats(Graphics g,int x, int y){
+        g.setColor(Assets.olive);
+        g.setFont(Assets.fontTitle);
         String mesaj = "Cougratulations!";
         g.drawString(mesaj,x, y);
     }
@@ -59,7 +59,9 @@ public class FinishState extends State{
     }
 
     public void drawScor(Graphics g,int x, int y){
-        g.drawString(GameState.secRamase + "* 6 + "+ GameState.killedMobs,x,y);
+        g.setColor(Assets.green);
+        g.setFont(Assets.fontSubtitle);
+        g.drawString("Scor: "+(GameState.secRamase * 6 + GameState.killedMobs*5)/11+"",x,y);
     }
 
     @Override

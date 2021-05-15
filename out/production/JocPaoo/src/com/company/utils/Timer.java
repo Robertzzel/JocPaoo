@@ -1,6 +1,7 @@
 package com.company.utils;
 
 import com.company.Handler;
+import com.company.gfx.Assets;
 import com.company.states.State;
 import java.awt.*;
 
@@ -41,8 +42,9 @@ public class Timer {
 
     private void finalClock(){
         resetClock();
-        State.setState(handler.getGame().menuState);
-        handler.getMouseManager().setUiManager(handler.getGame().menuState.getUiManager());
+        State.setState(handler.getGame().loseState);
+        handler.getMouseManager().setUiManager(handler.getGame().loseState.getUiManager());
+        handler.getGame().getDispaly().mesaj.setBackground(Assets.pewter);
     }
 
     private void resetClock(){

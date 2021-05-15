@@ -12,7 +12,6 @@ public class Bush1 extends StaticEntity {
 
     public Bush1(Handler handler, float x, float y) {
         super(handler, x, y, Tile.TILEWIDTH, Tile.TILEHEIGHT);
-
         bounds.x = 14;
         bounds.y = 23;
         bounds.width = width-30;
@@ -21,7 +20,6 @@ public class Bush1 extends StaticEntity {
 
     public Bush1(Handler handler, float x, float y, int health) {
         super(handler, x, y, Tile.TILEWIDTH, Tile.TILEHEIGHT);
-
         super.health = health;
         bounds.x = 0;
         bounds.y = 23;

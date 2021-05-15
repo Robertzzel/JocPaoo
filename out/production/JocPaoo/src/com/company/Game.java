@@ -28,6 +28,7 @@ public class Game implements Runnable{
     public State menuState;
     public State helpState;
     public State finishState;
+    public State loseState;
 
     //Inout
     private KeyManager keyManager;
@@ -64,9 +65,10 @@ public class Game implements Runnable{
         menuState = new MenuState(handler);
         helpState = new HelpState(handler);
         finishState = new FinishState(handler);
+        loseState = new LoseState(handler);
 
-        State.setState(finishState);
-        handler.getMouseManager().setUiManager(finishState.getUiManager());
+        State.setState(menuState);
+        handler.getMouseManager().setUiManager(menuState.getUiManager());
     }
 
     private void tick(){

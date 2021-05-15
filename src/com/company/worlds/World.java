@@ -7,7 +7,6 @@ import com.company.gfx.Assets;
 import com.company.staticEntities.Bush1;
 import com.company.staticEntities.Bush2;
 import com.company.staticEntities.FinishGrass;
-import com.company.staticEntities.Tree;
 import com.company.tiles.Tile;
 import com.company.utils.Timer;
 import com.company.utils.Utils;

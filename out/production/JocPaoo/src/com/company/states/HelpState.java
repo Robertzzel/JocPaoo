@@ -86,10 +86,9 @@ public class HelpState extends State{
     }
 
     private void drawTitlu(Graphics g,int x,int y){
-        Font font1 = new Font("Comic Sans MS", Font.BOLD, 40);
 
         g.setColor(Assets.green);
-        g.setFont(font1);
+        g.setFont(Assets.fontTitle);
         g.drawString("Run Bob, run", x, y);
 
     }
