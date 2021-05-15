@@ -30,9 +30,12 @@ public class HelpState extends State{
     public void render(Graphics g) {
         uiManager.render(g);
         drawBackground(g);
+
         drawTitlu(g,handler.getWidth()/2-150,100);
         drawScop(g,0,200);
         drawControls(g,handler.getWidth()/2,200);
+        drawTerrain(g,0,500);
+        drawScor(g, handler.getWidth()/2, 500);
     }
 
     public void verifEscapeKey(){
@@ -42,10 +45,50 @@ public class HelpState extends State{
         }
     }
 
+
+    private void drawScor(Graphics g,int x,int y){
+        Font fontSubtitle = new Font("Comic Sans MS", Font.BOLD, 25);
+        Font fontDetails = new Font("Comic Sans MS", Font.BOLD, 15);
+        int width = handler.getWidth()/2;
+        int height = handler.getHeight()/2;
+
+        g.setColor(Color.YELLOW);
+        g.setFont(fontSubtitle);
+        g.drawString("Scor",x+(int)(width/2)-25,y);
+
+        g.setColor(Color.black);
+        g.setFont(fontDetails);
+        g.drawString("Scor = (5*timRamas(in secunde)+6*tufeDistruse)/11",(int)(x+width/5),(int)(y+height/3));
+    }
+
+    private void drawTerrain(Graphics g,int x,int y){
+        Font fontSubtitle = new Font("Comic Sans MS", Font.BOLD, 25);
+        Font fontDetails = new Font("Comic Sans MS", Font.BOLD, 15);
+        int width = handler.getWidth()/2;
+        int height = handler.getHeight()/2;
+
+        g.setColor(Color.YELLOW);
+        g.setFont(fontSubtitle);
+        g.drawString("Terrain",x+(int)(width/2)-25,y);
+
+        g.setColor(Color.black);
+        g.setFont(fontDetails);
+        g.drawImage(Assets.tree,x+width/4,y+40,40,40,null);
+        g.drawImage(Assets.brad,x+width/4+45,y+40,40,40,null);
+        g.drawImage(Assets.stone,x+width/4+90,y+40,40,40,null);
+        g.drawString("-> solide, nu pot fi distruse",x+width/4+135,y+60);
+
+        g.drawImage(Assets.bush1,x+width/4,y+90,40,40,null);
+        g.drawString("-> solid, poate fi distrus, viata = 1",x+width/4+45,y+110);
+        g.drawImage(Assets.bush2,x+width/4,y+135,40,40,null);
+        g.drawString("-> solid, poate fi distrus, viata = 2",x+width/4+45,y+155);
+
+    }
+
     private void drawTitlu(Graphics g,int x,int y){
         Font font1 = new Font("Comic Sans MS", Font.BOLD, 40);
 
-        g.setColor(Color.RED);
+        g.setColor(new Color(89,60,31));
         g.setFont(font1);
         g.drawString("Run Bob, run", x, y);
 
@@ -84,14 +127,6 @@ public class HelpState extends State{
         g.drawString("KeuLeft = move left",(int)(x+width/2.7),(int)(y+height/3));
         g.drawString("KeuRight = move right",(int)(x+width/2.7),(int)(y+height/3)+20);
         g.drawString("Space = action",(int)(x+width/2.7),(int)(y+height/3)+40);
-    }
-
-    private void drawTerrain(Graphics g,int x,int y){
-
-    }
-
-    private void drawScor(Graphics g,int x,int y){
-
     }
 
     public void drawBackground(Graphics g){
