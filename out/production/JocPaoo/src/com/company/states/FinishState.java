@@ -1,5 +1,6 @@
 package com.company.states;
 
+import com.company.Game;
 import com.company.Handler;
 import com.company.UI.UIManager;
 import com.company.gfx.Assets;
@@ -20,9 +21,9 @@ public class FinishState extends State{
         if(handler.getKeyManager().esc){
             State.setState(handler.getGame().menuState);
             handler.getMouseManager().setUiManager(handler.getGame().menuState.getUiManager());
-            GameState.lvl = 1;
-            GameState.secRamase=0;
-            GameState.killedMobs=0;
+            Game.lvl = 1;
+            Game.secRamase=0;
+            Game.killedMobs=0;
         }
     }
 
@@ -61,7 +62,7 @@ public class FinishState extends State{
     public void drawScor(Graphics g,int x, int y){
         g.setColor(Assets.green);
         g.setFont(Assets.fontSubtitle);
-        g.drawString("Scor: "+(GameState.secRamase * 6 + GameState.killedMobs*5)/11+"",x,y);
+        g.drawString("Scor: "+(Game.secRamase * 6 + Game.killedMobs*5)/11+"",x,y);
     }
 
     @Override

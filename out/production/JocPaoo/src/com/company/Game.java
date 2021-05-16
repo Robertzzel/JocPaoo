@@ -6,12 +6,17 @@ import com.company.gfx.GameCamera;
 import com.company.input.KeyManager;
 import com.company.input.MouseManager;
 import com.company.states.*;
+import com.company.utils.DatabaseManager;
 
 import java.awt.*;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferStrategy;
 
 public class Game implements Runnable{
+
+    public static int lvl = 1;
+    public static int secRamase = 0;
+    public static int killedMobs = 0;
 
     private Display dispaly;
     private int width , height;
@@ -40,6 +45,9 @@ public class Game implements Runnable{
     //Handler
     private Handler handler;
 
+    //DB
+    DatabaseManager dbManager = new DatabaseManager();
+
     public Game(String title,int width,int heigh){
         this.title = title;
         this.width = width;
@@ -61,6 +69,7 @@ public class Game implements Runnable{
         handler = new Handler(this);
         gameCamera = new GameCamera(handler,0,0);
 
+        getDbManager().restoreData();
         gameState = new GameState(handler);
         menuState = new MenuState(handler);
         helpState = new HelpState(handler);
@@ -169,5 +178,9 @@ public class Game implements Runnable{
 
     public Graphics getG() {
         return g;
+    }
+
+    public DatabaseManager getDbManager() {
+        return dbManager;
     }
 }

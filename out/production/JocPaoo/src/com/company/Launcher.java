@@ -1,5 +1,7 @@
 package com.company;
 
+import com.company.utils.Database;
+
 public class Launcher {
 
     public static void main(String[] args) {

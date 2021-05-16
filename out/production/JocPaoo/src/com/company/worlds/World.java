@@ -72,6 +72,7 @@ public class World {
     }
     public void loadWorld(String path) {
 
+        System.out.println("Se incarca "+ path);
 
         String file = Utils.loadFileAsString(path); //clasa declarata in utils si contine metoda ajutatoare pentru program
         //loadFileAsString incarca continutul din fisierul dat la path

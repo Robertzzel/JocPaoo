@@ -1,5 +1,6 @@
 package com.company.staticEntities;
 
+import com.company.Game;
 import com.company.Handler;
 import com.company.entities.Entity;
 import com.company.states.GameState;
@@ -10,6 +11,6 @@ public abstract class StaticEntity extends Entity {
         super(handler,x,y,width,height);
     }
     public static void die(){
-        GameState.killedMobs++;
+        Game.killedMobs++;
     }
 }

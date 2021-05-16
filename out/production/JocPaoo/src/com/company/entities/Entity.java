@@ -36,7 +36,7 @@ public abstract class Entity {
     }
 
     public static void die(){
-        GameState.killedMobs++;
+        Game.killedMobs++;
     }
     public abstract void tick();
     public abstract void render(Graphics g);
