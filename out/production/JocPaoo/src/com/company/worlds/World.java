@@ -30,11 +30,7 @@ public class World {
     public World(Handler handler, String path){
         this.handler = handler;
         entityManager = new EntityManager(handler,new Player(handler,100,100,10));
-
         loadWorld(path);
-
-        //entityManager.getPlayer().setX(spawnX);
-        //entityManager.getPlayer().setY(spawnY);
     }
 
     public void tick()

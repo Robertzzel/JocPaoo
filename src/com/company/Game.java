@@ -44,7 +44,7 @@ public class Game implements Runnable{
     private Handler handler;
 
     //DB
-    DatabaseManager dbManager = new DatabaseManager();
+    DatabaseManager dbManager = null;
 
     public Game(String title,int width,int heigh){
         this.title = title;
@@ -52,6 +52,7 @@ public class Game implements Runnable{
         this.height = heigh;
         this.keyManager = new KeyManager();
         this.mouseManager = new MouseManager();
+        this.dbManager = new DatabaseManager();
     }
 
     public void init(){
@@ -67,7 +68,7 @@ public class Game implements Runnable{
         handler = new Handler(this);
         gameCamera = new GameCamera(handler,0,0);
 
-        getDbManager().restoreData();
+        dbManager.restoreData();
         gameState = new GameState(handler);
         menuState = new MenuState(handler);
         helpState = new HelpState(handler);

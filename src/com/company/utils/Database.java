@@ -18,6 +18,7 @@ public class Database {
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+            System.out.println("tabel neceart");
         }
     }
 
@@ -33,7 +34,7 @@ public class Database {
         return conn;
     }
 
-    public void createNewTable() {
+    public static void createNewTable() {
         // SQLite connection string
         String url = "jdbc:sqlite:database.db";
 
@@ -65,6 +66,20 @@ public class Database {
             pstmt.setDouble(3, secRamase);
             pstmt.setDouble(4, tufeDistruse);
             pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    public void dropTable(){
+        String url = "jdbc:sqlite:database.db";
+
+        // SQL statement for creating a new table
+        String sql = "DROP TABLE IF EXISTS 'runBob' ";
+
+        try{
+            Connection conn = DriverManager.getConnection(url);
+            Statement stmt = conn.createStatement();
+            stmt.execute(sql);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }

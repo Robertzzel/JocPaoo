@@ -23,7 +23,6 @@ public class MenuState extends State {
         uiManager.addObject(new UIImageButton(565,300,150,64, Assets.startBtn, new ClickListener(){ //START
             @Override
             public void onClick() {
-                System.out.println("Sa restaorat "+Game.lvl + " "+ Game.secRamase+" "+Game.killedMobs);
                 swichState("gameState");
             }
         }));
@@ -38,8 +37,6 @@ public class MenuState extends State {
         uiManager.addObject(new UIImageButton(565,430,150,64, Assets.exitBtn, new ClickListener(){ //EXIT
             @Override
             public void onClick() {
-                System.out.println("Se incarca "+Game.lvl + " "+ Game.secRamase+" "+Game.killedMobs);
-                handler.getGame().getDbManager().insertData("player",Game.lvl,Game.secRamase,Game.killedMobs);
                 handler.getMouseManager().setUiManager(null);
                 handler.getGame().getDispaly().getFrame().dispatchEvent(new WindowEvent(handler.getGame().getDispaly().getFrame(), WindowEvent.WINDOW_CLOSING));
             }
@@ -54,6 +51,7 @@ public class MenuState extends State {
     @Override
     public void tick() {
         uiManager.tick();
+        System.out.println(Game.lvl);
     }
 
     @Override

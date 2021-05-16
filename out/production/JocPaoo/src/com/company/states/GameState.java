@@ -11,6 +11,8 @@ public class GameState extends State {
 
     public GameState(Handler handler){
         super(handler);
+        if (Game.lvl>=4)
+            Game.lvl = 1;
         world = new World(handler,"res/worlds/world"+ Game.lvl +".txt");
         handler.setWorld(world);
     }
@@ -19,6 +21,7 @@ public class GameState extends State {
     public void tick() {
         world.tick();
         verifEscapeKey();
+        System.out.println(Game.lvl);
     }
 
     @Override

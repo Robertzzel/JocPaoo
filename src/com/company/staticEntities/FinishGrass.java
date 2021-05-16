@@ -24,7 +24,8 @@ public class FinishGrass extends  StaticEntity{
         if(this.checkPlayerCollisions(0,10)){
             Game.lvl++;
 
-            if(Game.lvl == 4){
+
+            if(Game.lvl >= 4){
                 State.setState(handler.getGame().finishState);
                 handler.getGame().getMouseManager().setUiManager(handler.getGame().finishState.getUiManager());
                 handler.getGame().getDispaly().mesaj.setBackground(Assets.pewter);
@@ -34,7 +35,11 @@ public class FinishGrass extends  StaticEntity{
                 handler.getWorld().loadWorld("res/worlds/world" + Game.lvl + ".txt");
                 handler.getGame().getDispaly().mesaj.setBackground(new Color(25, 117, 84));
             }
+            System.out.println("Se incarca "+Game.lvl + " "+ Game.secRamase+" "+Game.killedMobs);
+            handler.getGame().getDbManager().insertData("player",Game.lvl,Game.secRamase,Game.killedMobs);
+
         }
+
     }
 
     @Override

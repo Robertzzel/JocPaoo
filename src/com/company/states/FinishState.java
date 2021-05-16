@@ -19,11 +19,11 @@ public class FinishState extends State{
 
     public void verifEscapeKey(){
         if(handler.getKeyManager().esc){
-            State.setState(handler.getGame().menuState);
-            handler.getMouseManager().setUiManager(handler.getGame().menuState.getUiManager());
             Game.lvl = 1;
             Game.secRamase=0;
             Game.killedMobs=0;
+            State.setState(handler.getGame().menuState);
+            handler.getMouseManager().setUiManager(handler.getGame().menuState.getUiManager());
         }
     }
 
@@ -62,7 +62,7 @@ public class FinishState extends State{
     public void drawScor(Graphics g,int x, int y){
         g.setColor(Assets.green);
         g.setFont(Assets.fontSubtitle);
-        g.drawString("Scor: "+(Game.secRamase * 6 + Game.killedMobs*5)/11+"",x,y);
+        g.drawString("Scor: "+(Game.secRamase * 6 + Game.killedMobs*5)/11,x,y);
     }
 
     @Override
