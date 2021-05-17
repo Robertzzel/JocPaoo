@@ -3,6 +3,7 @@ package com.company;
 import com.company.gfx.GameCamera;
 import com.company.input.KeyManager;
 import com.company.input.MouseManager;
+import com.company.utils.DatabaseManager;
 import com.company.worlds.World;
 
 public class Handler {
@@ -20,6 +21,8 @@ public class Handler {
     public KeyManager getKeyManager(){
         return game.getKeyManager();
     }
+
+    public DatabaseManager getDatabaseManager(){return game.getDbManager();}
 
     public int getWidth(){
         return  game.getWidth();

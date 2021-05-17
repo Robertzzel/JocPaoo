@@ -1,5 +1,6 @@
 package com.company.worlds;
 
+import com.company.Game;
 import com.company.Handler;
 import com.company.entities.EntityManager;
 import com.company.entities.Player;
@@ -66,6 +67,7 @@ public class World {
             return Tile.grassTile;
         return t;
     }
+
     public void loadWorld(String path) {
 
         System.out.println("Se incarca "+ path);
@@ -95,6 +97,9 @@ public class World {
             }
         }
 
+        getEntityManager().getPlayer().setX(getSpawnX());
+        getEntityManager().getPlayer().setY(getSpawnY());
+
         int mobsIndex = 7 + height*width;
         for(int i=0;i<nrMobi;i++){
             int startingLinePosition = mobsIndex+(4*i);
@@ -102,8 +107,6 @@ public class World {
             int coordX = Utils.parseInt(tokens[startingLinePosition+1])*Assets.DEFAULT_TILE_WIDTH;
             int coordY = Utils.parseInt(tokens[startingLinePosition+2])*Assets.DEFAULT_TILE_HEIGHT;
             int health = Utils.parseInt(tokens[startingLinePosition+3]);
-
-            //System.out.println(type+" "+coordX+" "+coordY+" "+health);
 
             if(type == 1){
                 Bush1 bush = new Bush1(handler,coordX,coordY,health);
@@ -115,9 +118,11 @@ public class World {
                 entityManager.addEntity(new FinishGrass(handler,coordX,coordY));
             }else{ }
         }
+    }
 
-        getEntityManager().getPlayer().setX(getSpawnX());
-        getEntityManager().getPlayer().setY(getSpawnY());
+    public void setWorld(){
+        getEntityManager().deleteAll();
+        loadWorld("res/worlds/world" + Game.lvl + ".txt");
     }
 
     public int getWidth(){

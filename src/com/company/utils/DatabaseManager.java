@@ -1,7 +1,5 @@
 package com.company.utils;
-
 import com.company.Game;
-import com.company.states.GameState;
 
 public class DatabaseManager {
 
@@ -26,8 +24,15 @@ public class DatabaseManager {
 
     }
 
-
     public void insertData(String nume,int lvl,int secRamase,int tufeDistruse){
         database.insert(nume,lvl,secRamase,tufeDistruse);
+    }
+
+    public void printData(){
+        database.printAll();
+    }
+
+    public void deleteData(){
+        database.dropTable();
     }
 }

@@ -19,11 +19,10 @@ public class FinishState extends State{
 
     public void verifEscapeKey(){
         if(handler.getKeyManager().esc){
-            Game.lvl = 1;
-            Game.secRamase=0;
-            Game.killedMobs=0;
-            State.setState(handler.getGame().menuState);
-            handler.getMouseManager().setUiManager(handler.getGame().menuState.getUiManager());
+            Game.resetScore();
+            System.out.println("Se salveaza "+Game.lvl + " "+ Game.secRamase+" "+Game.killedMobs);
+            handler.getGame().getDbManager().insertData("player",Game.lvl,Game.secRamase,Game.killedMobs);
+            handler.getGame().swichState("menuState");
         }
     }
 

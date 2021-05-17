@@ -23,14 +23,15 @@ public class MenuState extends State {
         uiManager.addObject(new UIImageButton(565,300,150,64, Assets.startBtn, new ClickListener(){ //START
             @Override
             public void onClick() {
-                swichState("gameState");
+                handler.getGame().swichState("gameState");
             }
         }));
 
         uiManager.addObject(new UIImageButton(565,366,150,64, Assets.helpBtn, new ClickListener(){ //HELP
             @Override
             public void onClick() {
-                swichState("helpState");
+                handler.getDatabaseManager().printData();
+                handler.getGame().swichState("helpState");
             }
         }));
 
@@ -51,7 +52,6 @@ public class MenuState extends State {
     @Override
     public void tick() {
         uiManager.tick();
-        System.out.println(Game.lvl);
     }
 
     @Override

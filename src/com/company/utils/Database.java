@@ -107,4 +107,28 @@ public class Database {
         }
         return rez;
     }
+
+    public void printAll(){
+
+        String sql = "SELECT * FROM runBob";
+        String rez = null;
+
+        try {
+            Connection conn = this.connect();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+
+            // loop through the result set
+            while (rs.next()) {
+                rez= rs.getString("nume") + " " +
+                        rs.getInt("level") + " " +
+                        rs.getInt("secRamase") + " " +
+                        rs.getInt("tufeDistruse");
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        System.out.println(rez);
+    }
+
 }

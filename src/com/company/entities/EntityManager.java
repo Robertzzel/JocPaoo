@@ -46,13 +46,10 @@ public class EntityManager {
     }
 
     public void deleteAll(){
-        System.out.println("Incepere stergere");
         for(int i=0;i<entities.size();i++){
             if(entities.get(i).getClass() == player.getClass()){
-                System.out.println("Player");
                 continue;
             }else{
-                System.out.println(entities.get(i).getClass());
                 entities.get(i).alive = false;
             }
 

@@ -68,15 +68,13 @@ public class Game implements Runnable{
         handler = new Handler(this);
         gameCamera = new GameCamera(handler,0,0);
 
-        dbManager.restoreData();
         gameState = new GameState(handler);
         menuState = new MenuState(handler);
         helpState = new HelpState(handler);
         finishState = new FinishState(handler);
         loseState = new LoseState(handler);
 
-        State.setState(menuState);
-        handler.getMouseManager().setUiManager(menuState.getUiManager());
+       swichState("menuState");
     }
 
     private void tick(){
@@ -168,6 +166,34 @@ public class Game implements Runnable{
             thread.join();
         }catch (InterruptedException e){
 
+        }
+    }
+
+    public static void resetScore(){
+        lvl = 1;
+        secRamase = 0;
+        killedMobs = 0;
+    }
+
+    public void swichState(String state) {
+        if (state == "gameState") {
+            handler.getGame().getDispaly().mesaj.setBackground(new Color(25, 117, 84));
+            handler.getMouseManager().setUiManager(null);
+            State.setState(handler.getGame().gameState);
+        } else if (state == "menuState") {
+            handler.getMouseManager().setUiManager(handler.getGame().menuState.getUiManager());
+            State.setState(handler.getGame().menuState);
+            handler.getGame().getDispaly().mesaj.setBackground(Assets.pewter);
+        } else if (state == "helpState") {
+            handler.getMouseManager().setUiManager(handler.getGame().helpState.getUiManager());
+            State.setState(handler.getGame().helpState);
+        } else if (state == "finishState") {
+            handler.getMouseManager().setUiManager(handler.getGame().finishState.getUiManager());
+            State.setState(handler.getGame().finishState);
+            handler.getGame().getDispaly().mesaj.setBackground(Assets.pewter);
+        } else if (state == "loseState") {
+            System.out.println("Lose");
+        } else {
         }
     }
 
