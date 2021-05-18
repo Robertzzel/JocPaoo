@@ -28,6 +28,10 @@ public class DatabaseManager {
         database.insert(nume);
     }
 
+    public void insertData(){
+        database.insert();
+    }
+
     public void printData(){
         database.printAll();
     }

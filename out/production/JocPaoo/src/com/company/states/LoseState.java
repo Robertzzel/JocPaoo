@@ -19,11 +19,10 @@ public class LoseState extends State{
 
     public void verifEscapeKey(){
         if(handler.getKeyManager().esc){
-            State.setState(handler.getGame().menuState);
-            handler.getMouseManager().setUiManager(handler.getGame().menuState.getUiManager());
-            Game.lvl = 1;
-            Game.secRamase=0;
-            Game.killedMobs=0;
+            Game.resetScore();
+            System.out.println("Se salveaza "+Game.lvl + " "+ Game.secRamase+" "+Game.killedMobs);
+            handler.getGame().getDbManager().insertData("player");
+            handler.getGame().swichState("menuState");
         }
     }
 

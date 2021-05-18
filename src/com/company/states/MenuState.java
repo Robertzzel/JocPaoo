@@ -23,13 +23,17 @@ public class MenuState extends State {
         uiManager.addObject(new UIImageButton(565, 300, 150, 64, Assets.newBtn, new ClickListener() {//NEW
             @Override
             public void onClick() {
-                    handler.getGame().swichState("gameState");
+                Game.resetScore();
+                handler.getWorld().setWorld();
+                handler.getGame().swichState("gameState");
             }
         }));
 
         uiManager.addObject(new UIImageButton(565, 366, 150, 64, Assets.continueBtn, new ClickListener() {//CONTINUE
             @Override
             public void onClick() {
+                handler.getDatabaseManager().restoreData();
+                handler.getWorld().setWorld();
                 handler.getGame().swichState("gameState");
             }
         }));

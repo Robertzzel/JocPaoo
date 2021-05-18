@@ -204,7 +204,9 @@ public class Game implements Runnable{
             State.setState(handler.getGame().finishState);
             handler.getGame().getDispaly().mesaj.setBackground(Assets.pewter);
         } else if (state == "loseState") {
-            System.out.println("Lose");
+            handler.getMouseManager().setUiManager(handler.getGame().loseState.getUiManager());
+            State.setState(handler.getGame().loseState);
+            handler.getGame().getDispaly().mesaj.setBackground(Assets.pewter);
         } else if(state == "optionsState") {
             handler.getMouseManager().setUiManager(handler.getGame().optionsState.getUiManager());
             State.setState(handler.getGame().optionsState);

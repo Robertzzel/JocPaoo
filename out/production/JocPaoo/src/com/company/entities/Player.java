@@ -128,4 +128,8 @@ public class Player extends Creature {
             return Assets.player_still;
         }
     }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
 }

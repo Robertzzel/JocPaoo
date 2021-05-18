@@ -12,7 +12,6 @@ public class GameState extends State {
     public GameState(Handler handler){
         super(handler);
 
-        handler.getDatabaseManager().restoreData();
         if (Game.lvl>=4)
             Game.resetScore();
 
@@ -37,6 +36,7 @@ public class GameState extends State {
 
     public void verifEscapeKey(){
         if(handler.getKeyManager().esc){
+            handler.getDatabaseManager().insertData();
             handler.getGame().swichState("menuState");
         }
     }

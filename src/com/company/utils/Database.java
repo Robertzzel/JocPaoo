@@ -80,6 +80,24 @@ public class Database {
             System.out.println(e.getMessage());
         }
     }
+    public void insert() {
+        String sql = "INSERT INTO runBob(nume, level, secRamase, tufeDistruse, music, easy) VALUES(?,?,?,?,?,?)";
+
+        try{
+            Connection conn = this.connect();
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, "player");
+            pstmt.setDouble(2, Game.lvl);
+            pstmt.setDouble(3, Game.secRamase);
+            pstmt.setDouble(4, Game.killedMobs);
+            pstmt.setDouble(5, OptionsState.music);
+            pstmt.setDouble(6, OptionsState.easy);
+            pstmt.executeUpdate();
+            System.out.println("Salveaza: "+Game.lvl+" "+ Game.secRamase+" "+Game.killedMobs+" "+OptionsState.music+" "+OptionsState.easy);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 
     public int getMode(){
         String sql = "SELECT * FROM runBob";
@@ -99,6 +117,7 @@ public class Database {
         }
         return rez;
     }
+
 
     public void dropTable(){
         String url = "jdbc:sqlite:database.db";
