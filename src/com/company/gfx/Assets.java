@@ -12,7 +12,7 @@ public class Assets {
     public static final int DEFAULT_TILE_WIDTH=64,DEFAULT_TILE_HEIGHT=64;
     public static BufferedImage grass, stone, tree, brad, boat, player_still;
     public static BufferedImage[] player_down, player_up, player_left, player_right;
-    public static BufferedImage startBtn[], helpBtn[], exitBtn[];
+    public static BufferedImage startBtn[], helpBtn[], exitBtn[], continueBtn[], newBtn[], onBtn[], offBtn[], optionsBtn[];
     public static BufferedImage bush1,bush2,treeEntity;
     public static Font fontSubtitle = new Font("Comic Sans MS", Font.BOLD, 25);
     public static Font fontDetails = new Font("Comic Sans MS", Font.BOLD, 15);
@@ -42,16 +42,36 @@ public class Assets {
 
         //BUTTONS
         startBtn = new BufferedImage[2];
-        startBtn[0] = btnSheet.crop(0,192,150,48);
-        startBtn[1] = btnSheet.crop(0,240,150,48);
+        startBtn[0] = btnSheet.crop(0,192,128,48);
+        startBtn[1] = btnSheet.crop(0,240,128,48);
 
         helpBtn = new BufferedImage[2];
-        helpBtn[0] = btnSheet.crop(0,96,150,48);
-        helpBtn[1] = btnSheet.crop(0,144,150,48);
+        helpBtn[0] = btnSheet.crop(0,96,128,48);
+        helpBtn[1] = btnSheet.crop(0,144,128,48);
 
         exitBtn = new BufferedImage[2];
-        exitBtn[1] = btnSheet.crop(0,0,150,48);
-        exitBtn[0] = btnSheet.crop(0,48,150,48);
+        exitBtn[1] = btnSheet.crop(0,0,128,48);
+        exitBtn[0] = btnSheet.crop(0,48,128,48);
+
+        continueBtn = new BufferedImage[2];
+        continueBtn[0] = btnSheet.crop(128,0,128,48);
+        continueBtn[1] = btnSheet.crop(128,48,128,48);
+
+        newBtn = new BufferedImage[2];
+        newBtn[0] = btnSheet.crop(128,96,128,48);
+        newBtn[1] = btnSheet.crop(128,144,128,48);
+
+        onBtn = new BufferedImage[2];
+        onBtn[0] = btnSheet.crop(128,192,128,48);
+        onBtn[1] = btnSheet.crop(128,240,128,48);
+
+        offBtn = new BufferedImage[2];
+        offBtn[0] = btnSheet.crop(256,0,128,48);
+        offBtn[1] = btnSheet.crop(256,48,128,48);
+
+        optionsBtn= new BufferedImage[2];
+        optionsBtn[0] = btnSheet.crop(256,96,128,48);
+        optionsBtn[1] = btnSheet.crop(256,144,128,48);
 
         //TILES
         grass = worldSheet.crop(269,112,width,height);

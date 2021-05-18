@@ -21,7 +21,7 @@ public class FinishState extends State{
         if(handler.getKeyManager().esc){
             Game.resetScore();
             System.out.println("Se salveaza "+Game.lvl + " "+ Game.secRamase+" "+Game.killedMobs);
-            handler.getGame().getDbManager().insertData("player",Game.lvl,Game.secRamase,Game.killedMobs);
+            handler.getGame().getDbManager().insertData("player");
             handler.getGame().swichState("menuState");
         }
     }

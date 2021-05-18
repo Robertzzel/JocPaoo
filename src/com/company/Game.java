@@ -32,6 +32,7 @@ public class Game implements Runnable{
     public State helpState;
     public State finishState;
     public State loseState;
+    public State optionsState;
 
     //Inout
     private KeyManager keyManager;
@@ -46,7 +47,17 @@ public class Game implements Runnable{
     //DB
     DatabaseManager dbManager = null;
 
-    public Game(String title,int width,int heigh){
+    //singleton
+    private static Game gameInstance=null;
+
+    public static Game getInstance(String title,int width, int height){
+        if(gameInstance == null){
+            gameInstance = new Game(title,width,height);
+        }
+        return gameInstance;
+    }
+
+    private Game(String title,int width,int heigh){
         this.title = title;
         this.width = width;
         this.height = heigh;
@@ -73,6 +84,7 @@ public class Game implements Runnable{
         helpState = new HelpState(handler);
         finishState = new FinishState(handler);
         loseState = new LoseState(handler);
+        optionsState = new OptionsState(handler);
 
        swichState("menuState");
     }
@@ -193,7 +205,10 @@ public class Game implements Runnable{
             handler.getGame().getDispaly().mesaj.setBackground(Assets.pewter);
         } else if (state == "loseState") {
             System.out.println("Lose");
-        } else {
+        } else if(state == "optionsState") {
+            handler.getMouseManager().setUiManager(handler.getGame().optionsState.getUiManager());
+            State.setState(handler.getGame().optionsState);
+            handler.getGame().getDispaly().mesaj.setBackground(Assets.pewter);
         }
     }
 

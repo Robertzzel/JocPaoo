@@ -125,6 +125,11 @@ public class World {
         loadWorld("res/worlds/world" + Game.lvl + ".txt");
     }
 
+    public void setWorld(int lvl){
+        getEntityManager().deleteAll();
+        loadWorld("res/worlds/world" + lvl + ".txt");
+    }
+
     public int getWidth(){
         return width;
     }

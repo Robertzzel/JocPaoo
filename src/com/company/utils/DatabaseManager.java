@@ -6,7 +6,7 @@ public class DatabaseManager {
     private Database database = new Database();
 
     public DatabaseManager(){
-        database.createNewTable();
+        Database.createNewTable();
     }
 
     public void restoreData(){
@@ -24,8 +24,8 @@ public class DatabaseManager {
 
     }
 
-    public void insertData(String nume,int lvl,int secRamase,int tufeDistruse){
-        database.insert(nume,lvl,secRamase,tufeDistruse);
+    public void insertData(String nume){
+        database.insert(nume);
     }
 
     public void printData(){

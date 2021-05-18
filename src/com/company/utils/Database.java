@@ -1,5 +1,8 @@
 package com.company.utils;
 
+import com.company.Game;
+import com.company.states.OptionsState;
+
 import java.sql.*;
 
 public class Database {
@@ -35,6 +38,8 @@ public class Database {
     }
 
     public static void createNewTable() {
+
+
         // SQLite connection string
         String url = "jdbc:sqlite:database.db";
 
@@ -43,7 +48,9 @@ public class Database {
                 + " nume text NOT NULL,\n "
                 + " level integer NOT NULL,\n"
                 + " secRamase integer NOT NULL,\n"
-                + " tufeDistruse int NOT NULL\n"
+                + " tufeDistruse integer NOT NULL,\n"
+                + " music integer NOT NULL,\n"
+                + " easy integer NOT NULL\n"
                 + ");";
 
         try{
@@ -55,21 +62,44 @@ public class Database {
         }
     }
 
-    public void insert(String nume, int level, int secRamase, int tufeDistruse) {
-        String sql = "INSERT INTO runBob(nume, level, secRamase, tufeDistruse) VALUES(?,?,?,?)";
+    public void insert(String nume) {
+        String sql = "INSERT INTO runBob(nume, level, secRamase, tufeDistruse, music, easy) VALUES(?,?,?,?,?,?)";
 
         try{
             Connection conn = this.connect();
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, nume);
-            pstmt.setDouble(2, level);
-            pstmt.setDouble(3, secRamase);
-            pstmt.setDouble(4, tufeDistruse);
+            pstmt.setDouble(2, Game.lvl);
+            pstmt.setDouble(3, Game.secRamase);
+            pstmt.setDouble(4, Game.killedMobs);
+            pstmt.setDouble(5, OptionsState.music);
+            pstmt.setDouble(6, OptionsState.easy);
             pstmt.executeUpdate();
+            System.out.println("Salveaza: "+Game.lvl+" "+ Game.secRamase+" "+Game.killedMobs+" "+OptionsState.music+" "+OptionsState.easy);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
     }
+
+    public int getMode(){
+        String sql = "SELECT * FROM runBob";
+        int rez=0;
+
+        try {
+            Connection conn = this.connect();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+
+            // loop through the result set
+            while (rs.next()) {
+                rez=rs.getInt("easy");
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return rez;
+    }
+
     public void dropTable(){
         String url = "jdbc:sqlite:database.db";
 
@@ -100,7 +130,9 @@ public class Database {
                 rez= rs.getString("nume") + " " +
                         rs.getInt("level") + " " +
                         rs.getInt("secRamase") + " " +
-                        rs.getInt("tufeDistruse");
+                        rs.getInt("tufeDistruse")+ " " +
+                        rs.getInt("music")+ " " +
+                        rs.getInt("easy");
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -123,7 +155,9 @@ public class Database {
                 rez= rs.getString("nume") + " " +
                         rs.getInt("level") + " " +
                         rs.getInt("secRamase") + " " +
-                        rs.getInt("tufeDistruse");
+                        rs.getInt("tufeDistruse")+ " " +
+                        rs.getInt("music")+ " " +
+                        rs.getInt("easy");
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());

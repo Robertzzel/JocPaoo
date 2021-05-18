@@ -3,6 +3,7 @@ package com.company.staticEntities;
 import com.company.Game;
 import com.company.Handler;
 import com.company.gfx.Assets;
+import com.company.states.OptionsState;
 import com.company.tiles.Tile;
 
 import java.awt.*;
@@ -27,7 +28,7 @@ public class FinishGrass extends  StaticEntity{
             }else {
                 Game.addSecondstoScore(handler.getWorld().getTimer().getRemainingSeconds());
                 handler.getWorld().setWorld();
-                handler.getGame().getDbManager().insertData("player",Game.lvl,Game.secRamase,Game.killedMobs);
+                handler.getGame().getDbManager().insertData("player");
             }
         }
     }
