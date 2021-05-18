@@ -2,6 +2,7 @@ package com.company.states;
 
 import com.company.Game;
 import com.company.Handler;
+import com.company.utils.AudioPlayer;
 import com.company.worlds.World;
 
 import java.awt.*;
@@ -26,7 +27,6 @@ public class GameState extends State {
     public void tick() {
         world.tick();
         verifEscapeKey();
-        //System.out.println(Game.lvl);
     }
 
     @Override

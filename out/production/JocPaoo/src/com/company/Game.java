@@ -5,6 +5,7 @@ import com.company.gfx.GameCamera;
 import com.company.input.KeyManager;
 import com.company.input.MouseManager;
 import com.company.states.*;
+import com.company.utils.AudioPlayer;
 import com.company.utils.DatabaseManager;
 
 import java.awt.*;
@@ -47,6 +48,9 @@ public class Game implements Runnable{
     //DB
     DatabaseManager dbManager = null;
 
+    //AUDIO
+    AudioPlayer audioPlayer = null;
+
     //singleton
     private static Game gameInstance=null;
 
@@ -64,6 +68,7 @@ public class Game implements Runnable{
         this.keyManager = new KeyManager();
         this.mouseManager = new MouseManager();
         this.dbManager = new DatabaseManager();
+        this.audioPlayer = new AudioPlayer("/music/music.wav");
     }
 
     public void init(){
@@ -192,10 +197,12 @@ public class Game implements Runnable{
             handler.getGame().getDispaly().mesaj.setBackground(new Color(25, 117, 84));
             handler.getMouseManager().setUiManager(null);
             State.setState(handler.getGame().gameState);
+            audioPlayer.loop_play();
         } else if (state == "menuState") {
             handler.getMouseManager().setUiManager(handler.getGame().menuState.getUiManager());
             State.setState(handler.getGame().menuState);
             handler.getGame().getDispaly().mesaj.setBackground(Assets.pewter);
+            audioPlayer.stop();
         } else if (state == "helpState") {
             handler.getMouseManager().setUiManager(handler.getGame().helpState.getUiManager());
             State.setState(handler.getGame().helpState);
@@ -203,10 +210,12 @@ public class Game implements Runnable{
             handler.getMouseManager().setUiManager(handler.getGame().finishState.getUiManager());
             State.setState(handler.getGame().finishState);
             handler.getGame().getDispaly().mesaj.setBackground(Assets.pewter);
+            audioPlayer.stop();
         } else if (state == "loseState") {
             handler.getMouseManager().setUiManager(handler.getGame().loseState.getUiManager());
             State.setState(handler.getGame().loseState);
             handler.getGame().getDispaly().mesaj.setBackground(Assets.pewter);
+            audioPlayer.stop();
         } else if(state == "optionsState") {
             handler.getMouseManager().setUiManager(handler.getGame().optionsState.getUiManager());
             State.setState(handler.getGame().optionsState);
