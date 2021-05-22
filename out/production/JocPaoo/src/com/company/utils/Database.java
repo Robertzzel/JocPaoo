@@ -21,7 +21,6 @@ public class Database {
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
-            System.out.println("tabel neceart");
         }
     }
 
@@ -50,7 +49,8 @@ public class Database {
                 + " secRamase integer NOT NULL,\n"
                 + " tufeDistruse integer NOT NULL,\n"
                 + " music integer NOT NULL,\n"
-                + " easy integer NOT NULL\n"
+                + " easy integer NOT NULL,\n"
+                + " harta string NOT NULL\n"
                 + ");";
 
         try{
@@ -63,7 +63,7 @@ public class Database {
     }
 
     public void insert(String nume) {
-        String sql = "INSERT INTO runBob(nume, level, secRamase, tufeDistruse, music, easy) VALUES(?,?,?,?,?,?)";
+        String sql = "INSERT INTO runBob(nume, level, secRamase, tufeDistruse, music, easy, harta) VALUES(?,?,?,?,?,?,?)";
 
         try{
             Connection conn = this.connect();
@@ -74,6 +74,7 @@ public class Database {
             pstmt.setDouble(4, Game.killedMobs);
             pstmt.setDouble(5, OptionsState.music);
             pstmt.setDouble(6, OptionsState.easy);
+            pstmt.setString(7, "res/worlds/world" + Game.lvl + ".txt");
             pstmt.executeUpdate();
             System.out.println("Salveaza: "+Game.lvl+" "+ Game.secRamase+" "+Game.killedMobs+" "+OptionsState.music+" "+OptionsState.easy);
         } catch (SQLException e) {
@@ -81,7 +82,7 @@ public class Database {
         }
     }
     public void insert() {
-        String sql = "INSERT INTO runBob(nume, level, secRamase, tufeDistruse, music, easy) VALUES(?,?,?,?,?,?)";
+        String sql = "INSERT INTO runBob(nume, level, secRamase, tufeDistruse, music, easy, harta) VALUES(?,?,?,?,?,?,?)";
 
         try{
             Connection conn = this.connect();
@@ -92,6 +93,7 @@ public class Database {
             pstmt.setDouble(4, Game.killedMobs);
             pstmt.setDouble(5, OptionsState.music);
             pstmt.setDouble(6, OptionsState.easy);
+            pstmt.setString(7, "res/worlds/world" + Game.lvl + ".txt");
             pstmt.executeUpdate();
             System.out.println("Salveaza: "+Game.lvl+" "+ Game.secRamase+" "+Game.killedMobs+" "+OptionsState.music+" "+OptionsState.easy);
         } catch (SQLException e) {
@@ -99,9 +101,9 @@ public class Database {
         }
     }
 
-    public int getMode(){
+    public String getHarta(){
         String sql = "SELECT * FROM runBob";
-        int rez=0;
+        String rez="";
 
         try {
             Connection conn = this.connect();
@@ -110,7 +112,7 @@ public class Database {
 
             // loop through the result set
             while (rs.next()) {
-                rez=rs.getInt("easy");
+                rez=rs.getString("harta");
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -119,7 +121,7 @@ public class Database {
     }
 
 
-    public void dropTable(){
+    public static void dropTable(){
         String url = "jdbc:sqlite:database.db";
 
         // SQL statement for creating a new table

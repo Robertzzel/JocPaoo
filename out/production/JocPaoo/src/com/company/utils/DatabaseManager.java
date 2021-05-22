@@ -1,5 +1,6 @@
 package com.company.utils;
 import com.company.Game;
+import com.company.states.OptionsState;
 
 public class DatabaseManager {
 
@@ -16,12 +17,21 @@ public class DatabaseManager {
             int lvl = Integer.parseInt(date[1]);
             int secRamase = Integer.parseInt(date[2]);
             int tufeDistruse = Integer.parseInt(date[3]);
+            int music = Integer.parseInt(date[4]);
+            int easy = Integer.parseInt(date[5]);
+
 
             Game.lvl = lvl;
             Game.secRamase = secRamase;
             Game.killedMobs = tufeDistruse;
+            OptionsState.music = music;
+            OptionsState.easy = easy;
         }
 
+    }
+
+    public String getHarta(){
+        return database.getHarta();
     }
 
     public void insertData(String nume){
