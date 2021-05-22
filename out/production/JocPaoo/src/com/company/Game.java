@@ -121,6 +121,7 @@ public class Game implements Runnable{
     public void run(){
         init();
 
+        //calculare fps
         int fps = 100;
         double timePerTick = 1000000000 / fps;
         double delta = 0;
@@ -197,7 +198,8 @@ public class Game implements Runnable{
             handler.getGame().getDispaly().mesaj.setBackground(new Color(25, 117, 84));
             handler.getMouseManager().setUiManager(null);
             State.setState(handler.getGame().gameState);
-            audioPlayer.loop_play();
+            if(OptionsState.music == 1)
+                audioPlayer.play_loop();
         } else if (state == "menuState") {
             handler.getMouseManager().setUiManager(handler.getGame().menuState.getUiManager());
             State.setState(handler.getGame().menuState);

@@ -61,6 +61,14 @@ public class MenuState extends State {
         }));
     }
 
+    private void drawTitlu(Graphics g,int x,int y){
+
+        g.setColor(Assets.green);
+        g.setFont(Assets.fontTitle);
+        g.drawString("Run Bob, run", x, y);
+
+    }
+
     public void drawBackground(Graphics g){
         g.setColor(Assets.pewter);
         g.fillRect(0,0,handler.getWidth(),handler.getHeight());
@@ -74,6 +82,7 @@ public class MenuState extends State {
     @Override
     public void render(Graphics g) {
         drawBackground(g);
+        drawTitlu(g,handler.getWidth()/2-150,100);
         uiManager.render(g);
     }
 

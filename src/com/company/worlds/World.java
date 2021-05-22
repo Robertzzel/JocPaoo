@@ -30,13 +30,13 @@ public class World {
 
     public World(Handler handler, String path){
         this.handler = handler;
-        entityManager = new EntityManager(handler,new Player(handler,100,100,10));
+        entityManager = new EntityManager(handler,new Player(handler,100,100,2));
         loadWorld(path);
     }
 
     public void tick()
     {
-        entityManager.tick(); //tick la toate entitatile
+        entityManager.tick();
         timer.tick();
     }
 
@@ -69,8 +69,6 @@ public class World {
     }
 
     public void loadWorld(String path) {
-
-        System.out.println("Se incarca "+ path);
 
         String file = Utils.loadFileAsString(path); //clasa declarata in utils si contine metoda ajutatoare pentru program
         //loadFileAsString incarca continutul din fisierul dat la path

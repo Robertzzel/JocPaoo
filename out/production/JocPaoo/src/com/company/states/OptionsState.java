@@ -38,7 +38,7 @@ public class OptionsState extends State{
             @Override
             public void onClick() {
                 easy = 1;
-                handler.getWorld().getEntityManager().getPlayer().setSpeed(10);
+                handler.getWorld().getEntityManager().getPlayer().setSpeed(4);
                 handler.getGame().getDbManager().insertData();
             }
         }));
@@ -47,7 +47,7 @@ public class OptionsState extends State{
             @Override
             public void onClick() {
                 easy = 0;
-                handler.getWorld().getEntityManager().getPlayer().setSpeed(3);
+                handler.getWorld().getEntityManager().getPlayer().setSpeed(2);
                 handler.getGame().getDbManager().insertData();
             }
         }));
