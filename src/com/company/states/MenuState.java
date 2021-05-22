@@ -47,7 +47,6 @@ public class MenuState extends State {
         uiManager.addObject(new UIImageButton(565,498,150,64, Assets.helpBtn, new ClickListener(){ //HELP
             @Override
             public void onClick() {
-                handler.getDatabaseManager().printData();
                 handler.getGame().swichState("helpState");
             }
         }));

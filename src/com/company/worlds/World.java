@@ -121,7 +121,6 @@ public class World {
     public void setWorld(){
         getEntityManager().deleteAll();
         String pathHarta = handler.getDatabaseManager().getHarta();
-        System.out.println(pathHarta);
         if(!pathHarta.equals("") )
             loadWorld(pathHarta);
         else loadWorld("res/worlds/world" + Game.lvl + ".txt");
@@ -130,11 +129,7 @@ public class World {
 
     public void setWorld(int lvl){
         getEntityManager().deleteAll();
-        String pathHarta = handler.getDatabaseManager().getHarta();
-        System.out.println(pathHarta);
-        if(!pathHarta.equals("") )
-            loadWorld(pathHarta);
-        else loadWorld("res/worlds/world" + Game.lvl + ".txt");
+        loadWorld("res/worlds/world" + lvl + ".txt");
     }
 
     public int getWidth(){

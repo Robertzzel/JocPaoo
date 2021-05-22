@@ -12,14 +12,13 @@ public class DatabaseManager {
 
     public void restoreData(){
         if (database.selectAll() != null) {
-        String[] date=database.selectAll().split(" ");
+            String[] date=database.selectAll().split(" ");
             String nume = date[0];
             int lvl = Integer.parseInt(date[1]);
             int secRamase = Integer.parseInt(date[2]);
             int tufeDistruse = Integer.parseInt(date[3]);
             int music = Integer.parseInt(date[4]);
             int easy = Integer.parseInt(date[5]);
-
 
             Game.lvl = lvl;
             Game.secRamase = secRamase;
@@ -42,11 +41,7 @@ public class DatabaseManager {
         database.insert();
     }
 
-    public void printData(){
-        database.printAll();
-    }
-
-    public void deleteData(){
-        database.dropTable();
-    }
+//    public void printData(){
+//        database.printAll();
+//    }
 }

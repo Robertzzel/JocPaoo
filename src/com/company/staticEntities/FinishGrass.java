@@ -27,8 +27,8 @@ public class FinishGrass extends  StaticEntity{
                 handler.getWorld().setWorld(1);
             }else {
                 Game.addSecondstoScore(handler.getWorld().getTimer().getRemainingSeconds());
-                handler.getWorld().setWorld();
                 handler.getGame().getDbManager().insertData("player");
+                handler.getWorld().setWorld();
             }
         }
     }

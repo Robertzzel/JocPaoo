@@ -76,7 +76,6 @@ public class Database {
             pstmt.setDouble(6, OptionsState.easy);
             pstmt.setString(7, "res/worlds/world" + Game.lvl + ".txt");
             pstmt.executeUpdate();
-            System.out.println("Salveaza: "+Game.lvl+" "+ Game.secRamase+" "+Game.killedMobs+" "+OptionsState.music+" "+OptionsState.easy);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -95,7 +94,6 @@ public class Database {
             pstmt.setDouble(6, OptionsState.easy);
             pstmt.setString(7, "res/worlds/world" + Game.lvl + ".txt");
             pstmt.executeUpdate();
-            System.out.println("Salveaza: "+Game.lvl+" "+ Game.secRamase+" "+Game.killedMobs+" "+OptionsState.music+" "+OptionsState.easy);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
